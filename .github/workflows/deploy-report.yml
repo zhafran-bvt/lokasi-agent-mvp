@@ -1,0 +1,61 @@
+name: Deploy Report to Surge
+
+on:
+  workflow_dispatch:  # Manual trigger from GitHub UI or CLI
+  schedule:
+    - cron: '0 10 * * *'  # Daily at 10 AM UTC (adjust as needed)
+  push:
+    branches: [main]
+    paths:
+      - 'data/runs/**'
+      - 'data/reports/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install Surge CLI
+        run: npm install -g surge
+      
+      - name: Generate report from latest run
+        run: npm run report
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      
+      - name: Build HTML and artifacts
+        run: npm run build
+      
+      - name: Deploy to Surge
+        run: surge dist/ --domain lokasi-regression.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+      
+      - name: Post deployment summary
+        if: success()
+        run: |
+          echo "✅ Successfully deployed to https://lokasi-regression.surge.sh"
+          echo ""
+          echo "📊 Report Summary:"
+          ls -lh dist/
+      
+      - name: Report deployment failure
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Check logs above for details."
+          exit 1

@@ -1,0 +1,30 @@
+- generic [ref=e3]:
+  - region "Notifications Alt+T"
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - img "Lokasi Intelligence Logo" [ref=e8]
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - heading "Welcome Back" [level=2] [ref=e21]
+          - paragraph [ref=e22]: Enter your email to sign in.
+        - generic [ref=e23]:
+          - textbox "Email address" [ref=e26]
+          - generic [ref=e27]:
+            - generic [ref=e28]:
+              - button "Remember me" [ref=e29] [cursor=pointer]:
+                - generic [ref=e30]:
+                  - checkbox "Remember me" [ref=e31]
+                  - generic:
+                    - img
+              - generic [ref=e32]: Remember me
+            - button "Forgot password?" [ref=e33] [cursor=pointer]
+        - button "Continue" [disabled]
+      - generic [ref=e34]:
+        - link "Terms of services" [ref=e35] [cursor=pointer]:
+          - /url: https://bvarta.com/good-corporate-governance/#pix-tab-1695295226014-6bcc688d-7f7d
+        - link "Support" [ref=e37] [cursor=pointer]:
+          - /url: https://bvarta.com/contact-us/
+    - generic [ref=e38]:
+      - img [ref=e40]
+      - heading "Empower Your Business with LOKASI Intelligence" [level=2] [ref=e204]
+      - heading "Unlock actionable insights through advanced geospatial analytics. Visualize trends, optimize operations, and make smarter decisions with ease" [level=3] [ref=e205]

@@ -1,0 +1,22 @@
+{
+  "name": "lokasi-agent-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local MVP for exploratory web-app regression using Playwright + OpenAI + file-based memory.",
+  "scripts": {
+    "baseline": "node src/index.js baseline",
+    "regression": "node src/index.js regression",
+    "report": "node src/index.js report-latest",
+    "approve": "node src/index.js approve-latest",
+    "build": "node src/build-site.js",
+    "deploy": "npm run build && surge",
+    "check": "node --check src/index.js && node --check src/browser.js && node --check src/explorer.js && node --check src/llm.js && node --check src/storage.js && node --check src/diff.js && node --check src/report.js && node --check src/run-model.js && node --check src/workflows/index.js && node --check src/workflows/dataset-explorer.js && node --check src/workflows/generic-feature.js && node --check src/workflows/spatial-analysis.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "marked": "^13.0.3",
+    "openai": "^4.104.0",
+    "playwright": "^1.55.0"
+  }
+}

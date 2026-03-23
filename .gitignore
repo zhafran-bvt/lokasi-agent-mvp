@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build & output
+dist/
+build/
+output/
+
+# Data files (optional - uncomment if you want to exclude)
+# data/
+
+# Playwright & test artifacts
+playwright-report/
+test-results/
+.playwright/
+screenshots/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+*.log
+
+# Temporary files
+.cache/
+.temp/
+tmp/
+*.tmp
+
+# Surge credentials (if stored locally)
+.surge
+.surge.sh

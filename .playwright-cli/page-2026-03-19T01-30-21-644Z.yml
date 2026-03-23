@@ -1,0 +1,48 @@
+- generic [ref=e3]:
+  - region "Notifications Alt+T"
+  - generic [ref=e218]:
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - link "LOKASI Intelligence Bvarta Logo" [ref=e223] [cursor=pointer]:
+          - /url: /intelligence
+          - img "LOKASI Intelligence Bvarta Logo" [ref=e224]
+        - generic [ref=e230]:
+          - button [ref=e231] [cursor=pointer]:
+            - img [ref=e232]
+          - button [ref=e235] [cursor=pointer]:
+            - img [ref=e236]
+          - button [ref=e240] [cursor=pointer]:
+            - img [ref=e241]
+          - button [ref=e245] [cursor=pointer]:
+            - img [ref=e246]
+      - generic [ref=e248]:
+        - button [ref=e249] [cursor=pointer]:
+          - img [ref=e251]
+        - button "Toggle Sidebar" [ref=e254] [cursor=pointer]:
+          - img [ref=e255]
+        - button [ref=e260] [cursor=pointer]:
+          - img [ref=e262]
+    - generic [ref=e269]:
+      - button "Analysis Job Queue" [ref=e271] [cursor=pointer]:
+        - generic [ref=e272]:
+          - img [ref=e273]
+          - img "Analysis Job Queue" [ref=e275]
+      - generic [ref=e279]:
+        - button "Recenter Map" [ref=e280] [cursor=pointer]:
+          - img [ref=e281]
+        - button "Draw Polygon" [ref=e292] [cursor=pointer]:
+          - img [ref=e293]
+        - button [ref=e295] [cursor=pointer]:
+          - img [ref=e296]
+        - generic [ref=e298]:
+          - button [ref=e299] [cursor=pointer]:
+            - img [ref=e300]
+          - button "4" [ref=e302] [cursor=pointer]:
+            - generic [ref=e303]: "4"
+          - button [ref=e304] [cursor=pointer]:
+            - img [ref=e305]
+        - button [ref=e307] [cursor=pointer]:
+          - img [ref=e308]
+        - button "Street" [ref=e318] [cursor=pointer]:
+          - paragraph [ref=e319]: Street
+      - region "Map" [ref=e320]
