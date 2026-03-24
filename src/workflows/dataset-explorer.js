@@ -397,6 +397,10 @@ function buildBranchPlans() {
     return aggregationBranches;
   }
 
+  if (config.focusedWorkflow === 'dataset-explorer-maintenance') {
+    return postAddBranches;
+  }
+
   return [...aggregationBranches, ...modalBranches, ...postAddBranches];
 }
 
@@ -661,6 +665,41 @@ function buildPolicyAction(branch, state, step) {
     const remainingUnlocked = prioritizeAggregationCandidates(branch.aggregation, availableUnlocked.filter((item) => !triedTitles.has(item.title)));
     const selectedDatasetTitle = step.selectedCandidate || lastPassedSelectedDataset(step.attempts);
     const latestSearchQuery = lastPassedSearchQuery(step.attempts);
+    if (step.tableVerification?.verified && branch.postAddUseCase === 'edit-filter' && !step.editFilterVerification?.verified) {
+      return {
+        label: 'Open edit filter',
+        action_type: 'open_edit_filter',
+        target_text: step.selectedCandidate || selectedDatasetTitle || branch.preferredDataset || '',
+        input_text: '',
+        expected_signal: 'The loaded dataset row opens Attribute Filter with committed saved filter cards visible.',
+        rationale: 'Post-add maintenance branch continues from Data Selection after successful add and verification.',
+        priority: 0,
+      };
+    }
+    if (step.tableVerification?.verified && branch.postAddUseCase === 'delete-filter') {
+      if (!step.editFilterVerification?.verified) {
+        return {
+          label: 'Open edit filter',
+          action_type: 'open_edit_filter',
+          target_text: step.selectedCandidate || selectedDatasetTitle || branch.preferredDataset || '',
+          input_text: '',
+          expected_signal: 'The loaded dataset row opens Attribute Filter with committed saved filter cards visible.',
+          rationale: 'Delete maintenance first reopens the existing filter editor from Data Selection.',
+          priority: 0,
+        };
+      }
+      if (!step.deleteFilterVerification?.verified) {
+        return {
+          label: 'Delete existing filter',
+          action_type: 'delete_existing_filter',
+          target_text: step.attributeFilter?.attribute || '',
+          input_text: '',
+          expected_signal: 'A committed saved filter card is removed from the Attribute Filter panel.',
+          rationale: 'Post-add maintenance branch deletes one committed saved filter card from the existing dataset editor.',
+          priority: 0,
+        };
+      }
+    }
     const aggregationReady = state.activeSelection?.aggregation === branch.aggregation
       || normalizeTitle(state.selectedAggregation).includes(normalizeTitle(branch.aggregation))
       || (state.availableCandidates || []).length > 0;
@@ -837,41 +876,6 @@ function buildPolicyAction(branch, state, step) {
         rationale: 'Policy precondition before add.',
         priority: 0,
       };
-    }
-    if (step.tableVerification?.verified && branch.postAddUseCase === 'edit-filter' && !step.editFilterVerification?.verified) {
-      return {
-        label: 'Open edit filter',
-        action_type: 'open_edit_filter',
-        target_text: step.selectedCandidate || state.activeSelection?.title || branch.preferredDataset || '',
-        input_text: '',
-        expected_signal: 'The loaded dataset row opens Attribute Filter with committed saved filter cards visible.',
-        rationale: 'Post-add coverage: verify existing filters can be reopened from Data Selection without resetting the dataset.',
-        priority: 0,
-      };
-    }
-    if (step.tableVerification?.verified && branch.postAddUseCase === 'delete-filter') {
-      if (!step.editFilterVerification?.verified) {
-        return {
-          label: 'Open edit filter',
-          action_type: 'open_edit_filter',
-          target_text: step.selectedCandidate || state.activeSelection?.title || branch.preferredDataset || '',
-          input_text: '',
-          expected_signal: 'The loaded dataset row opens Attribute Filter with committed saved filter cards visible.',
-          rationale: 'Post-add coverage: open the existing filter editor before deleting a saved filter.',
-          priority: 0,
-        };
-      }
-      if (!step.deleteFilterVerification?.verified) {
-        return {
-          label: 'Delete existing filter',
-          action_type: 'delete_existing_filter',
-          target_text: step.attributeFilter?.attribute || '',
-          input_text: '',
-          expected_signal: 'A committed saved filter card is removed from the Attribute Filter panel.',
-          rationale: 'Post-add coverage: verify a saved filter can be deleted from the existing dataset editor.',
-          priority: 0,
-        };
-      }
     }
     if (selectedDataset && hasPassedAttemptForCandidate(step.attempts, 'choose_province') && hasPassedAttemptForCandidate(step.attempts, 'apply_attribute_filter') && !state.provinceValue) {
       const preferredProvince = preferredProvinceForDataset(branch.aggregation, state.activeSelection?.title || step.selectedCandidate || '');
@@ -1092,7 +1096,8 @@ async function executePlannerAction({ page, branch, action, state, step, helpers
       }
       case 'open_edit_filter': {
         const expectedTitle = step?.selectedCandidate || state.activeSelection?.title || action.target_text || '';
-        await openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+        // Don't call openAnalysisBase here - it would clear the dataset selection state
+        // that was successfully added in the previous add_dataset step
         await sleep(300);
         const editor = await openDataSelectionEditFilter(page, expectedTitle);
         const cards = editor?.opened ? await readCommittedFilterCards(page).catch(() => []) : [];
