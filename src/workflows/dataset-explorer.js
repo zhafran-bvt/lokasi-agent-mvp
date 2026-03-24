@@ -1568,7 +1568,7 @@ async function recoverEmptyDataSelectionResult({
   step.recoveryAttempts = recoveryAttempts;
 
   for (const strategy of strategies) {
-    await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+    // Don't call openAnalysisBase here - dataset state from add_dataset should be preserved
     await helpers.sleep(300);
 
     const editor = await helpers.openDataSelectionEditFilter(page, expectedTitle).catch(() => ({ opened: false, reason: 'Edit filter flow failed' }));
@@ -1650,7 +1650,7 @@ async function recoverH3MobilityFutureYear({
   const targetYear = 2026;
   const dateRange = buildFutureYearDateRange(targetYear);
 
-  await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+  // Don't call openAnalysisBase here - dataset state from add_dataset should be preserved
   await helpers.sleep(300);
 
   const editor = await helpers.openDataSelectionEditFilter(page, expectedTitle).catch(() => ({ opened: false, reason: 'Edit filter flow failed' }));
@@ -1889,6 +1889,7 @@ async function verifyDataSelectionTableForStep({
   }
 
   if (tableVerification?.emptyResult && ['H3', 'Polygon', 'Administrative Area'].includes(step.aggregation)) {
+    // Note: This recovery function will call openAnalysisBase with different provinces to attempt recovery
     const recoveredVerification = await recoverEmptyDataSelectionResult({
       page,
       runId,

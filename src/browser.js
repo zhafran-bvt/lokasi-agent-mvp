@@ -4044,11 +4044,40 @@ async function openDataSelectionEditFilter(page, expectedTitle = '') {
         const rect = el.getBoundingClientRect();
         return style.visibility !== 'hidden' && style.display !== 'none' && rect.width > 0 && rect.height > 0;
       };
+      const inDataSelectionBand = (rect, top, bottom) => (
+        rect.bottom >= top - 8
+        && rect.top <= bottom - 8
+      );
+      const isButtonLike = (el) => (
+        el instanceof HTMLElement
+        && (
+          el.tagName === 'BUTTON'
+          || el.getAttribute('role') === 'button'
+          || el.getAttribute('aria-haspopup') === 'menu'
+        )
+      );
       const clearMarkers = () => {
         Array.from(document.querySelectorAll('[data-codex-edit-target],[data-codex-expand-target]')).forEach((el) => {
           el.removeAttribute('data-codex-edit-target');
           el.removeAttribute('data-codex-expand-target');
         });
+      };
+      const scoreText = (text) => {
+        const normalizedText = normalizeDataset(text);
+        if (
+          !normalizedText
+          || normalizedText === 'data selection'
+          || normalizedText === 'add dataset'
+          || normalizedText.includes('select your own data or explore our dataset library')
+        ) {
+          return 0;
+        }
+        let score = 0;
+        for (const alias of aliasesInPage) {
+          if (normalizedText.includes(alias) || alias.includes(normalizedText)) score = Math.max(score, 1000 + alias.length);
+        }
+        score = Math.max(score, tokenScore(text));
+        return score;
       };
       const tokenScore = (text) => {
         const tokens = new Set(normalizeDataset(text).split(' ').filter(Boolean));
@@ -4069,6 +4098,9 @@ async function openDataSelectionEditFilter(page, expectedTitle = '') {
         .map((el) => ({ el, text: normalize(el.textContent) }))
         .filter(({ text }) => headingNames.includes(text));
       const dataSelectionHeading = headingMatches.find(({ text }) => text === 'Data Selection')?.el || null;
+      if (!(dataSelectionHeading instanceof HTMLElement)) {
+        return { found: false, reason: 'Data Selection heading not visible' };
+      }
       const dataSelectionTop = dataSelectionHeading instanceof HTMLElement
         ? dataSelectionHeading.getBoundingClientRect().top
         : Number.NEGATIVE_INFINITY;
@@ -4081,28 +4113,132 @@ async function openDataSelectionEditFilter(page, expectedTitle = '') {
         .map(({ el }) => el.getBoundingClientRect().top)
         .sort((a, b) => a - b)[0] ?? Number.POSITIVE_INFINITY;
 
-      const rows = Array.from(document.querySelectorAll('[role="listitem"], li'))
-        .filter((el, index, arr) => (
-          el instanceof HTMLElement
-          && visible(el)
-          && arr.findIndex((candidate) => candidate === el) === index
-        ))
-        .map((row) => {
-          const rect = row.getBoundingClientRect();
-          if (rect.bottom < dataSelectionTop - 8) return null;
-          if (rect.top > nextHeadingTop - 8) return null;
-          const text = normalize(row.innerText || row.textContent || '');
-          if (!text) return null;
-          const normalizedText = normalizeDataset(text);
-          let score = 0;
-          for (const alias of aliasesInPage) {
-            if (normalizedText.includes(alias) || alias.includes(normalizedText)) score = Math.max(score, 1000 + alias.length);
+      let scanRoot = dataSelectionHeading.parentElement;
+      while (scanRoot) {
+        const buttons = Array.from(scanRoot.querySelectorAll('button, [role="button"]'))
+          .filter((el) => el instanceof HTMLElement && visible(el))
+          .map((el) => normalizeDataset(el.textContent || el.getAttribute('aria-label') || ''));
+        const rootText = normalizeDataset(scanRoot.textContent || '');
+        const hasAddDataset = buttons.some((text) => text.includes('add dataset')) || rootText.includes('add dataset');
+        const hasExplorerHeading = rootText.includes('dataset explorer');
+        if (hasAddDataset && !hasExplorerHeading) break;
+        scanRoot = scanRoot.parentElement;
+      }
+      if (!(scanRoot instanceof HTMLElement)) {
+        return { found: false, reason: 'Data Selection container not found' };
+      }
+
+      const interactiveControls = Array.from(scanRoot.querySelectorAll('[data-testid="edit-button"], [data-testid="expand-dataset-trigger"], [data-testid="trash-button"]'))
+        .filter((el) => el instanceof HTMLElement && visible(el));
+
+      const rows = interactiveControls
+        .map((control) => {
+          let current = control.parentElement;
+          let best = null;
+          while (current && current !== scanRoot && current instanceof HTMLElement) {
+            if (visible(current)) {
+              const rect = current.getBoundingClientRect();
+              const text = normalize(current.innerText || current.textContent || '');
+              const score = scoreText(text);
+              if (
+                inDataSelectionBand(rect, dataSelectionTop, nextHeadingTop)
+                && score > 0
+              ) {
+                const sizePenalty = Math.min(text.length, 800) / 1000;
+                const weightedScore = score - sizePenalty;
+                if (!best || weightedScore > best.weightedScore) {
+                  best = { row: current, score, weightedScore };
+                }
+              }
+            }
+            current = current.parentElement;
           }
-          score = Math.max(score, tokenScore(text));
-          return { row, score };
+          return best;
         })
         .filter(Boolean)
-        .sort((left, right) => right.score - left.score);
+        .filter((item, index, arr) => arr.findIndex((other) => other.row === item.row) === index)
+        .sort((left, right) => right.weightedScore - left.weightedScore);
+
+      const textAnchors = Array.from(scanRoot.querySelectorAll('button,[role="button"],div,section,article,li,span,p,h1,h2,h3,h4,h5,h6'))
+        .filter((el) => el instanceof HTMLElement && visible(el))
+        .map((anchor) => {
+          const anchorRect = anchor.getBoundingClientRect();
+          if (!inDataSelectionBand(anchorRect, dataSelectionTop, nextHeadingTop)) return null;
+          const anchorText = normalize(anchor.innerText || anchor.textContent || '');
+          const anchorScore = scoreText(anchorText);
+          if (anchorScore <= 0) return null;
+          let current = anchor;
+          let best = null;
+          while (current && current !== scanRoot && current instanceof HTMLElement) {
+            if (visible(current)) {
+              const rect = current.getBoundingClientRect();
+              if (inDataSelectionBand(rect, dataSelectionTop, nextHeadingTop)) {
+                const text = normalize(current.innerText || current.textContent || '');
+                const score = Math.max(scoreText(text), anchorScore);
+                const controlBonus = current.querySelector('[data-testid="edit-button"], [data-testid="expand-dataset-trigger"], [data-testid="trash-button"], button, [role="button"]')
+                  ? 200
+                  : 0;
+                const weightedScore = score + controlBonus - (Math.min(text.length, 1200) / 1000);
+                if (!best || weightedScore > best.weightedScore) {
+                  best = { row: current, score, weightedScore };
+                }
+              }
+            }
+            current = current.parentElement;
+          }
+          return best;
+        })
+        .filter(Boolean)
+        .filter((item, index, arr) => arr.findIndex((other) => other.row === item.row) === index)
+        .sort((left, right) => right.weightedScore - left.weightedScore);
+
+      rows.unshift(...textAnchors);
+      rows.sort((left, right) => right.weightedScore - left.weightedScore);
+
+      if (!rows.length) {
+        const fallbackRows = Array.from(scanRoot.querySelectorAll('button, [role="button"], div, section, article, li'))
+          .filter((el) => el instanceof HTMLElement && visible(el))
+          .map((row) => {
+            const rect = row.getBoundingClientRect();
+            const text = normalize(row.innerText || row.textContent || '');
+            const score = scoreText(text);
+            if (
+              !inDataSelectionBand(rect, dataSelectionTop, nextHeadingTop)
+              || score <= 0
+            ) {
+              return null;
+            }
+            return { row, score, weightedScore: score - (Math.min(text.length, 800) / 1000) };
+          })
+          .filter(Boolean)
+          .sort((left, right) => right.weightedScore - left.weightedScore);
+        rows.push(...fallbackRows);
+      }
+
+      // Final fallback: ignore inDataSelectionBand entirely — the row may be inside
+      // a scrollable sub-container whose getBoundingClientRect() falls outside the
+      // heading-derived band even though it is visually present (the known false-negative).
+      if (!rows.length) {
+        const wideFallbackRows = Array.from(scanRoot.querySelectorAll(
+          'button, [role="button"], div, section, article, li'
+        ))
+          .filter((el) => el instanceof HTMLElement && visible(el))
+          .map((row) => {
+            const text = normalize(row.innerText || row.textContent || '');
+            const score = scoreText(text);
+            if (score <= 0) return null;
+            const hasControl = !!row.querySelector(
+              '[data-testid="edit-button"], [data-testid="expand-dataset-trigger"], [data-testid="trash-button"], button, [role="button"]'
+            );
+            const controlBonus = hasControl ? 200 : 0;
+            const weightedScore = score + controlBonus - (Math.min(text.length, 1200) / 1000);
+            return { row, score, weightedScore };
+          })
+          .filter(Boolean)
+          .filter((item, index, arr) => arr.findIndex((other) => other.row === item.row) === index)
+          .sort((left, right) => right.weightedScore - left.weightedScore);
+        rows.push(...wideFallbackRows);
+      }
 
       const bestRow = rows[0]?.row;
       if (!(bestRow instanceof HTMLElement) || rows[0].score <= 0) {
@@ -4118,6 +4254,29 @@ async function openDataSelectionEditFilter(page, expectedTitle = '') {
       const expandButton = bestRow.querySelector('[data-testid="expand-dataset-trigger"]');
       if (expandButton instanceof HTMLElement && visible(expandButton)) {
         expandButton.setAttribute('data-codex-expand-target', 'true');
+        return { found: true, expanded: false };
+      }
+
+      const genericButtons = Array.from(bestRow.querySelectorAll('button, [role="button"]'))
+        .filter((el) => el instanceof HTMLElement && visible(el))
+        .filter((el) => {
+          const text = normalize(el.innerText || el.textContent || el.getAttribute('aria-label') || el.getAttribute('title') || '');
+          return !text.includes('add dataset') && !text.includes('generate results');
+        })
+        .sort((left, right) => {
+          const leftRect = left.getBoundingClientRect();
+          const rightRect = right.getBoundingClientRect();
+          if (Math.abs(rightRect.right - leftRect.right) > 4) return rightRect.right - leftRect.right;
+          return leftRect.top - rightRect.top;
+        });
+      const genericExpand = genericButtons[0];
+      if (genericExpand instanceof HTMLElement) {
+        genericExpand.setAttribute('data-codex-expand-target', 'true');
+        return { found: true, expanded: false };
+      }
+
+      if (isButtonLike(bestRow)) {
+        bestRow.setAttribute('data-codex-expand-target', 'true');
         return { found: true, expanded: false };
       }
 
@@ -4252,6 +4411,7 @@ async function readCommittedFilterCards(page) {
 }
 
 async function deleteCommittedFilterCard(page, expectedLabel = '') {
+  const normalizeCardLabel = (value) => String(value || '').replace(/\s+/g, ' ').trim().toLowerCase();
   const beforeCards = await readCommittedFilterCards(page).catch(() => []);
   if (!beforeCards.length) {
     return {
@@ -4346,7 +4506,7 @@ async function deleteCommittedFilterCard(page, expectedLabel = '') {
   await sleep(800);
   const afterCards = await readCommittedFilterCards(page).catch(() => []);
   const deleted = afterCards.length < beforeCards.length
-    || !afterCards.some((card) => lower(card.label) === lower(markTarget?.label || ''));
+    || !afterCards.some((card) => normalizeCardLabel(card.label) === normalizeCardLabel(markTarget?.label || ''));
 
   return {
     attempted: true,
@@ -6141,7 +6301,7 @@ export function buildCandidateActions(pageSnapshot) {
     })
     .map(({ priority, ...action }) => action);
 
-  if (config.focusedWorkflow === 'dataset-explorer-bvt') {
+  if (String(config.focusedWorkflow || '').startsWith('dataset-explorer')) {
     return prioritized.filter((action) => action.text === 'Dataset Explorer').slice(0, 1);
   }
 

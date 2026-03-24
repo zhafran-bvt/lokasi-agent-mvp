@@ -169,7 +169,7 @@ async function performRun(mode) {
   const session = await createBrowserSession(runId);
   let loginResult = null;
   let latestExploration = null;
-  const effectiveRunTimeoutMs = config.focusedWorkflow === 'dataset-explorer-bvt'
+  const effectiveRunTimeoutMs = String(config.focusedWorkflow || '').startsWith('dataset-explorer')
     ? Math.max(config.runTimeoutMs, 1_800_000)
     : config.runTimeoutMs;
   const runControl = {
