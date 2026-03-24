@@ -9,8 +9,8 @@
   },
   "status": "completed",
   "partial": true,
-  "startedAt": "2026-03-24T12:05:50.568Z",
-  "finishedAt": "2026-03-24T12:23:08.503Z",
+  "startedAt": "2026-03-24T12:45:16.116Z",
+  "finishedAt": "2026-03-24T13:02:37.061Z",
   "pageCount": 1,
   "pages": [
     {
@@ -19,7 +19,7 @@
       "title": "Spatial Analysis - LOKASI",
       "pageKey": "/intelligence::Spatial Analysis - LOKASI",
       "fingerprint": "bf5bdd82b0f7d55c",
-      "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png",
+      "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png",
       "headings": [],
       "buttons": [
         {
@@ -83,172 +83,160 @@
       "tables": [],
       "dialogs": [],
       "versionHints": [
-        "Presence of 'Analysis Job Queue' suggests asynchronous job processing feature set",
-        "'Draw Polygon' and 'Recenter Map' indicate a map-first UI with client-side drawing tools",
-        "Separate 'Dataset Explorer' and 'Dataset Management' imply role separation between dataset browsing and administrative dataset operations"
+        "Page title 'Spatial Analysis - LOKASI' and pathname '/intelligence'",
+        "Presence of controls: Analysis, Dataset Explorer, Dataset Management, Analysis Job Queue, Draw Polygon, Recenter Map, Search",
+        "Visible map label or search result text: '4 Street'"
       ],
       "llm": {
         "page_name": "Spatial Analysis - LOKASI",
-        "purpose": "Map-based spatial analysis workspace for running geospatial analyses against datasets and managing analysis jobs/datasets.",
-        "capability_summary": "Provides a map interface with tools to draw/select areas, run or queue spatial analyses, explore and manage datasets, search for locations, and account/settings access. Visible controls include Analysis, Dataset Explorer, Dataset Management, Analysis Job Queue, Draw Polygon, Recenter Map, Search and UI collapse/account controls.",
-        "why_this_page": "Users perform geospatial analysis workflows: define an area on the map, choose datasets, execute analysis jobs, and monitor job status or manage datasets. The page aggregates tools needed to run and manage spatial analyses.",
+        "purpose": "Interactive map-based spatial analysis workspace for running analyses against datasets, managing datasets, and interacting with map controls and jobs.",
+        "capability_summary": "Provides map controls (recenter, draw polygon), dataset discovery and management entry points (Dataset Explorer, Dataset Management), analysis execution and monitoring (Analysis, Analysis Job Queue), search and account/settings access. Visible map context shows a street label or search result ('4 Street').",
+        "why_this_page": "This is the primary interface for users to perform spatial analysis workflows: selecting areas on the map, choosing datasets, launching analysis jobs, and monitoring job status/results on a map canvas.",
         "likely_features": [
           {
-            "name": "Map canvas with selectable features/labels",
-            "description": "Central map displays geographic features and labels (e.g., '4 Street') and supports recentering.",
-            "why_this_feature": "The body text shows '4 Street' and there is a 'Recenter Map' control, implying a visible map and selectable map features.",
+            "name": "Analysis launcher",
+            "description": "Button/entry to create and run spatial analyses against selected datasets or map extents.",
+            "why_this_feature": "Presence of an 'Analysis' control and 'Analysis Job Queue' indicates ability to run and queue analytical tasks.",
             "confidence": 0.95,
-            "risk_level": "medium",
-            "important_actions": [
-              "Recenter map",
-              "Click/select map features",
-              "Verify label corresponds to geometry"
-            ],
-            "tier": "main",
-            "featureGroup": "Spatial Analysis"
-          },
-          {
-            "name": "Draw Polygon / area selection tool",
-            "description": "Tool to draw polygons on the map to define analysis areas.",
-            "why_this_feature": "A 'Draw Polygon' button is present, indicating polygon selection is required to scope analyses.",
-            "confidence": 0.9,
-            "risk_level": "medium",
-            "important_actions": [
-              "Activate Draw Polygon and create a polygon",
-              "Confirm polygon geometry is displayed and editable"
-            ],
-            "tier": "main",
-            "featureGroup": "Spatial Analysis"
-          },
-          {
-            "name": "Analysis run/control panel",
-            "description": "Control to initiate spatial analyses against selected area/datasets.",
-            "why_this_feature": "An 'Analysis' button exists, implying a workflow to run analyses from the page.",
-            "confidence": 0.9,
             "risk_level": "high",
             "important_actions": [
-              "Click Analysis to open analysis options",
-              "Start an analysis and verify job creation"
+              "Open Analysis flow",
+              "Start a new analysis job with a selected area/dataset",
+              "Verify job appears in Analysis Job Queue"
             ],
             "tier": "main",
             "featureGroup": "Spatial Analysis"
           },
           {
-            "name": "Analysis Job Queue / job monitoring",
-            "description": "Interface to view status of queued/running analysis jobs.",
-            "why_this_feature": "An 'Analysis Job Queue' control is visible, indicating asynchronous job handling and status monitoring.",
-            "confidence": 0.9,
+            "name": "Analysis Job Queue",
+            "description": "List or queue UI where running/completed analysis jobs are monitored.",
+            "why_this_feature": "Explicit 'Analysis Job Queue' control is visible.",
+            "confidence": 0.98,
             "risk_level": "high",
             "important_actions": [
-              "Open Job Queue to verify running/completed jobs",
-              "Cancel or inspect job details if available"
+              "Open queue and confirm job states (running, completed, failed)",
+              "Inspect job details/logs",
+              "Cancel or retry a job if controls exist"
             ],
             "tier": "main",
             "featureGroup": "Project Management"
           },
           {
             "name": "Dataset Explorer",
-            "description": "Browse and preview available spatial datasets to use in analyses.",
-            "why_this_feature": "A 'Dataset Explorer' button implies users can select datasets for analysis.",
-            "confidence": 0.85,
-            "risk_level": "high",
+            "description": "Browse and select datasets to use in analyses or to display on the map.",
+            "why_this_feature": "'Dataset Explorer' button is present alongside dataset management tools.",
+            "confidence": 0.9,
+            "risk_level": "medium",
             "important_actions": [
-              "Open Dataset Explorer and select a dataset",
-              "Confirm dataset attributes/preview are shown"
+              "Open Dataset Explorer and verify dataset list loads",
+              "Select a dataset and confirm it can be added to map or used in analysis"
             ],
             "tier": "main",
             "featureGroup": "Dataset Explorer"
           },
           {
             "name": "Dataset Management",
-            "description": "Administrative controls to add/remove or configure datasets.",
-            "why_this_feature": "A 'Dataset Management' button suggests dataset CRUD or configuration capabilities.",
-            "confidence": 0.8,
+            "description": "Administrative UI for creating/updating/deleting datasets used by analyses.",
+            "why_this_feature": "'Dataset Management' control suggests dataset CRUD capabilities.",
+            "confidence": 0.85,
             "risk_level": "high",
             "important_actions": [
-              "Open Dataset Management to create/edit a dataset record",
-              "Validate that changes affect available datasets"
+              "Open Dataset Management and verify dataset CRUD operations",
+              "Ensure permissions/errors surface correctly when modifying datasets"
             ],
             "tier": "main",
             "featureGroup": "Dataset Management"
           },
           {
-            "name": "Search (location/address)",
-            "description": "Search control to locate addresses or places on the map.",
-            "why_this_feature": "A 'Search' button is present and '4 Street' appears as body text, likely a search or selected location label.",
+            "name": "Map selection tool (Draw Polygon)",
+            "description": "Tool to draw polygon on map to define analysis area or filter data.",
+            "why_this_feature": "'Draw Polygon' control is visible, implying spatial selection functionality.",
+            "confidence": 0.97,
+            "risk_level": "medium",
+            "important_actions": [
+              "Use Draw Polygon to create an area and verify coordinates/geometry returned",
+              "Run analysis using the drawn polygon as input and confirm results"
+            ],
+            "tier": "main",
+            "featureGroup": "Spatial Analysis"
+          },
+          {
+            "name": "Recenter Map",
+            "description": "Control to reset map view to a default center or focused feature.",
+            "why_this_feature": "'Recenter Map' control is visible.",
+            "confidence": 0.9,
+            "risk_level": "low",
+            "important_actions": [
+              "Pan/zoom map then click Recenter Map and confirm view resets as expected"
+            ],
+            "tier": "main",
+            "featureGroup": "Spatial Analysis"
+          },
+          {
+            "name": "Search (geocoding/address)",
+            "description": "Search bar to find addresses or places and recenter map to results.",
+            "why_this_feature": "A 'Search' control exists and page contains text '4 Street' suggesting a search result or label.",
             "confidence": 0.8,
             "risk_level": "medium",
             "important_actions": [
-              "Use Search to find '4 Street' and verify map pans and label",
-              "Confirm search results and selection behavior"
+              "Search for an address (e.g., '4 Street') and confirm map centers and highlights result",
+              "Verify result metadata/displayed label"
             ],
             "tier": "secondary",
             "featureGroup": "Search"
           },
           {
-            "name": "User/Settings controls",
-            "description": "Access to account settings and application configuration.",
-            "why_this_feature": "'My Account' and 'Settings' buttons are visible for user and app-level settings.",
-            "confidence": 0.8,
+            "name": "UI controls: Collapse, Settings, My Account",
+            "description": "Collapse sidebar, access settings and account-related actions.",
+            "why_this_feature": "Buttons for 'Collapse', 'Settings', and 'My Account' are present.",
+            "confidence": 0.9,
             "risk_level": "low",
             "important_actions": [
-              "Open Settings to confirm configurable options",
-              "Open My Account to verify user info and permissions display"
+              "Toggle Collapse to hide/show side panels",
+              "Open Settings and My Account to verify navigation/modal behavior"
             ],
             "tier": "secondary",
             "featureGroup": "Settings"
-          },
-          {
-            "name": "Sidebar collapse/expand",
-            "description": "Toggle to collapse or expand side panels/tools.",
-            "why_this_feature": "A 'Collapse' control is present, suggesting adjustable workspace layout.",
-            "confidence": 0.75,
-            "risk_level": "low",
-            "important_actions": [
-              "Toggle Collapse and confirm UI responds and map resizes"
-            ],
-            "tier": "secondary",
-            "featureGroup": "Expand"
           }
         ],
         "candidate_next_actions": [
           {
-            "action": "Click 'Draw Polygon' and draw a polygon covering a sample area on the map",
-            "why_this_action": "Validates area-selection workflow required before running analyses and ensures polygon geometry is created and visible"
+            "action": "Open the Analysis flow and attempt to create a new analysis job",
+            "why_this_action": "Validates core workflow: job creation UI, required inputs, and submission behavior"
           },
           {
-            "action": "Click 'Dataset Explorer' and select a dataset to use for analysis",
-            "why_this_action": "Confirms datasets are discoverable and can be attached to analysis jobs"
+            "action": "Draw a polygon on the map and run an analysis using that polygon as the input area",
+            "why_this_action": "Verifies spatial selection integrates with analysis engine and that results render on the map"
           },
           {
-            "action": "Click 'Analysis' and submit an analysis job using the drawn polygon and selected dataset",
-            "why_this_action": "Verifies end-to-end analysis submission and that the app enqueues or runs jobs"
+            "action": "Open Analysis Job Queue and confirm the newly submitted job appears with correct status and details",
+            "why_this_action": "Ensures job lifecycle is tracked and visible to users (critical for asynchronous analyses)"
           },
           {
-            "action": "Open 'Analysis Job Queue' and confirm the newly submitted job appears with expected status",
-            "why_this_action": "Ensures job lifecycle is tracked and visible (queued, running, completed, failed)"
+            "action": "Open Dataset Explorer, select a dataset, and add it to the map or use it in an analysis",
+            "why_this_action": "Confirms dataset discovery and binding to analysis workflows"
           },
           {
-            "action": "Use 'Search' to locate '4 Street' (or another address) and verify the map recenters and label displays",
-            "why_this_action": "Checks search-to-map interaction and that address labels correspond to geometry"
+            "action": "Use Search to find '4 Street' (or another address) and verify the map recenters and label/marker appears",
+            "why_this_action": "Checks geocoding/search integration and map centering behavior indicated by visible text '4 Street'"
           },
           {
-            "action": "Click 'Recenter Map' after panning/zooming to confirm map resets to expected view",
-            "why_this_action": "Validates recenter control behavior and map view state management"
+            "action": "Click Recenter Map after panning/zooming and verify map returns to expected default or focused extent",
+            "why_this_action": "Validates map control behavior and expected view state reset"
           },
           {
-            "action": "Open 'Dataset Management' and attempt to edit or upload a dataset metadata entry (if permitted)",
-            "why_this_action": "Tests dataset CRUD capabilities and that dataset changes propagate to the Explorer/analysis options"
+            "action": "Open Dataset Management and attempt a dataset create/update/delete operation (if permitted)",
+            "why_this_action": "Tests administrative dataset workflows that affect analyses and storage of source data"
           },
           {
-            "action": "Toggle 'Collapse' to confirm side panel hides/shows and UI remains usable",
-            "why_this_action": "Ensures layout controls don't break core analysis or map interactions"
+            "action": "Toggle Collapse and observe that side panels or toolbars hide/show without breaking map interactions",
+            "why_this_action": "Checks UI stability and layout responsiveness during user interactions"
           }
         ],
         "version_hints": [
-          "Presence of 'Analysis Job Queue' suggests asynchronous job processing feature set",
-          "'Draw Polygon' and 'Recenter Map' indicate a map-first UI with client-side drawing tools",
-          "Separate 'Dataset Explorer' and 'Dataset Management' imply role separation between dataset browsing and administrative dataset operations"
+          "Page title 'Spatial Analysis - LOKASI' and pathname '/intelligence'",
+          "Presence of controls: Analysis, Dataset Explorer, Dataset Management, Analysis Job Queue, Draw Polygon, Recenter Map, Search",
+          "Visible map label or search result text: '4 Street'"
         ]
       },
       "actionResults": [
@@ -306,7 +294,7 @@
                     "priority": 0,
                     "observed_signal": "search input=Village",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354060718-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356424716-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
                     "reason": ""
                   },
                   {
@@ -320,7 +308,7 @@
                     "priority": 0,
                     "observed_signal": "active dataset=Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354075197-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356434712-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
                     "clicked": true,
                     "candidateTitle": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "reason": ""
@@ -336,7 +324,7 @@
                     "priority": 0,
                     "observed_signal": "province selected=yes",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354089627-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356448164-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
                     "provinceSelected": true,
                     "selection": "DKI Jakarta",
                     "province": "DKI Jakarta",
@@ -354,7 +342,7 @@
                     "priority": 0,
                     "observed_signal": "attrFilter=applied",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354111668-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356463248-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
                     "attributeFilter": {
                       "attempted": true,
                       "applied": true,
@@ -380,7 +368,7 @@
                     "priority": 0,
                     "observed_signal": "Success toast observed; committed-state verification deferred to post-add reconciliation.",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354126149-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356475084-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
                     "addDataset": {
                       "attempted": true,
                       "added": true,
@@ -404,7 +392,7 @@
                     "priority": 0,
                     "observed_signal": "Loaded dataset row not found in Data Selection",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354227569-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356543416-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
                     "editFilterVerification": {
                       "attempted": true,
                       "opened": false,
@@ -425,7 +413,7 @@
                     "priority": 0,
                     "observed_signal": "Loaded dataset row not found in Data Selection",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354249556-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356554499-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
                     "editFilterVerification": {
                       "attempted": true,
                       "opened": false,
@@ -437,133 +425,197 @@
                   },
                   {
                     "driver": "llm",
-                    "label": "Set aggregation to Administrative Area",
+                    "label": "Select aggregation: Administrative Area",
                     "action_type": "select_aggregation",
                     "target_text": "Administrative Area",
-                    "input_text": "Administrative Area",
-                    "expected_signal": "aggregation_selected:Administrative Area",
-                    "rationale": "Aggregation is empty; Administrative Area is required for Village-level dataset and for reopening the dataset's existing filter editor.",
+                    "input_text": "",
+                    "expected_signal": "Aggregation control shows 'Administrative Area' selected.",
+                    "rationale": "Restore the original aggregation context (Administrative Area) so the previously added dataset appears in Data Selection.",
                     "priority": 1,
                     "observed_signal": "aggregation selected=-",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354290507-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356597021-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
                     "reason": ""
                   },
                   {
                     "driver": "llm",
-                    "label": "Verify Data Selection loaded datasets",
+                    "label": "Verify dataset row visible in Data Selection",
                     "action_type": "verify_state",
-                    "target_text": "Data Selection loaded datasets (check for 'Household Expenditure Village Jakarta 2024')",
-                    "input_text": "",
-                    "expected_signal": "Loaded dataset row 'Household Expenditure Village Jakarta 2024' is visible in Data Selection (or explicit absence message)",
-                    "rationale": "Confirm committed dataset row exists before trying to open its Attribute Filter editor; necessary because prior open-edit attempts failed.",
+                    "target_text": "Data Selection contains 'Household Expenditure Village Jakarta 2024'",
+                    "input_text": "Check Data Selection panel for a committed row titled 'Household Expenditure Village Jakarta 2024' and any visible filter cards or edit controls.",
+                    "expected_signal": "Committed dataset row for 'Household Expenditure Village Jakarta 2024' is visible in Data Selection (row, edit/filter button, or saved filter card present).",
+                    "rationale": "Confirm committed dataset visibility in the Data Selection list (required before opening an edit-filter flow).",
                     "priority": 1,
                     "observed_signal": "State captured without mutation",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354306660-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356612533-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
                     "reason": "State captured without mutation"
                   },
                   {
                     "driver": "llm",
-                    "label": "Search for 'Household Expenditure Village Jakarta 2024'",
-                    "action_type": "search_dataset",
+                    "label": "Select dataset row",
+                    "action_type": "select_dataset",
                     "target_text": "Household Expenditure Village Jakarta 2024",
+                    "input_text": "",
+                    "expected_signal": "Dataset row becomes active/selected (highlighted) and an edit/filter button or saved filter cards are visible in Data Selection.",
+                    "rationale": "Activate the committed dataset row so its edit/filter controls or saved filter cards become visible (needed before opening edit-filter).",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356629984-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Household Expenditure Village Jakarta 2024",
+                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Verify dataset row interactivity and edit control",
+                    "action_type": "verify_state",
+                    "target_text": "Data Selection row 'Household Expenditure Village Jakarta 2024' is present and interactive",
+                    "input_text": "Check for row highlightability, clickability, and visible edit/filter button or saved filter cards on the row.",
+                    "expected_signal": "Dataset row becomes selectable/highlightable or an edit/filter button or saved filter card is visible on the row.",
+                    "rationale": "Determine whether the Data Selection row is clickable or has an edit/filter button before attempting to open the edit-filter editor.",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356644499-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Verify dataset row edit/filter control presence",
+                    "action_type": "verify_state",
+                    "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' shows an edit icon, three-dot menu, saved filter card, or inline 'Edit filter' control.",
+                    "input_text": "Inspect the committed dataset row area (right side of row and any overflow/ellipsis menus) for an edit/filter button, saved filter cards, or a context menu that would open the edit-filter editor.",
+                    "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' button, three-dot menu, or saved filter card) next to the 'Household Expenditure Village Jakarta 2024' row.",
+                    "rationale": "Selecting the dataset row failed previously. Confirm whether an edit/filter button, ellipsis menu, or inline saved-filter card is present on the 'Household Expenditure Village Jakarta 2024' row so we can open the edit-filter editor next.",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356660082-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Select dataset row to reveal edit/filter controls",
+                    "action_type": "select_dataset",
+                    "target_text": "Household Expenditure Village Jakarta 2024",
+                    "input_text": "Click the dataset row title or row area for 'Household Expenditure Village Jakarta 2024' to make it active/highlighted.",
+                    "expected_signal": "Dataset row becomes highlighted/selected and an edit/filter button, three-dot menu, or saved filter card becomes visible on the row.",
+                    "rationale": "Activating the committed dataset row should surface the edit/filter button or saved filter cards needed to open the edit-filter editor.",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356675902-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Household Expenditure Village Jakarta 2024",
+                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Verify dataset row edit/filter control presence (right-side and overflow)",
+                    "action_type": "verify_state",
+                    "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' — inspect right-side area, overflow/ellipsis menu, and any inline saved-filter card for an edit/filter control",
+                    "input_text": "Check for an edit icon, three-dot/ellipsis menu, context-menu entry labeled 'Edit filter', inline saved-filter cards, or any disabled state indicator on those controls. Note exact visible text and whether control is interactive.",
+                    "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' menu entry, three-dot menu, or saved filter card) is present and marked interactive/enabled, or a clear disabled/hidden state is reported.",
+                    "rationale": "We must locate a non-row-click control (edit icon, three-dot menu, 'Edit filter' entry, or saved filter card) to open the edit-filter editor since direct row selection failed.",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356689266-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Inspect right-side / overflow area for edit/filter control",
+                    "action_type": "verify_state",
+                    "target_text": "Right-side area and overflow (three-dot/ellipsis) menu for 'Household Expenditure Village Jakarta 2024' row",
+                    "input_text": "Check the row's right-hand controls, overflow/ellipsis menu, and any inline saved-filter card for an edit icon, 'Edit filter' menu entry, or disabled/hidden indicator. Report exact visible text and whether it's interactive.",
+                    "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' menu entry, three-dot menu, or saved filter card) is present and interactive, or an explicit disabled/hidden state is reported.",
+                    "rationale": "The dataset row was not clickable previously. We must locate a non-row control (ellipsis/three-dot menu, edit icon, inline saved-filter card, or explicit 'Edit filter' entry) to open the edit-filter editor.",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356706849-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Open overflow menu for dataset row",
+                    "action_type": "select_dataset",
+                    "target_text": "Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+                    "input_text": "Click the row's three-dot/ellipsis overflow menu to open the context menu and reveal the 'Edit filter' entry (or edit icon).",
+                    "expected_signal": "Overflow/context menu opens for the dataset row and shows an 'Edit filter' entry, edit icon, or inline saved-filter actions; menu items are visible and interactive.",
+                    "rationale": "Direct row selection failed previously. The row's overflow/ellipsis menu often contains the 'Edit filter' action; clicking it should expose the edit/filter entry without changing dataset selection state.",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356727016-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+                    "reason": "Dataset not clickable: Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Search for the dataset to surface an interactive row",
+                    "action_type": "search_dataset",
+                    "target_text": "Dataset Explorer search input",
                     "input_text": "Household Expenditure Village Jakarta 2024",
-                    "expected_signal": "Dataset card 'Household Expenditure Village Jakarta 2024' appears in Dataset Explorer results (visible card or explicit 'no results' message).",
-                    "rationale": "Find the specific Village-level Administrative Area dataset so we can open its Attribute Filter editor and verify saved filter cards.",
+                    "expected_signal": "Search results show the dataset as a selectable row (row highlights or selection becomes possible) and an edit/filter control (edit icon, three-dot menu, or inline saved-filter card) becomes visible and interactive for that row.",
+                    "rationale": "Filtering the Dataset Explorer list to the exact title may render a dedicated, interactive row or reveal the edit/filter control if the current view is non-interactive or scrolled out of an actionable list.",
                     "priority": 1,
                     "observed_signal": "Search input was not editable",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354322925-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356742401-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
                     "reason": "Search input was not editable"
                   },
                   {
                     "driver": "llm",
-                    "label": "Verify Dataset Explorer & Data Selection state",
-                    "action_type": "verify_state",
-                    "target_text": "Verify Dataset Explorer search editable, aggregation='Administrative Area' committed, and Data Selection contains 'Household Expenditure Village Jakarta 2024' (or explicit absence).",
-                    "input_text": "",
-                    "expected_signal": "Confirmed: search input editable state, aggregation_selected:Administrative Area (or not), and explicit presence or absence of dataset row 'Household Expenditure Village Jakarta 2024'.",
-                    "rationale": "Confirm whether the Dataset Explorer search input is enabled, the Administrative Area aggregation is actually selected, and whether 'Household Expenditure Village Jakarta 2024' is present in Data Selection before attempting search/add again.",
-                    "priority": 1,
-                    "observed_signal": "State captured without mutation",
-                    "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354343003-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-                    "reason": "State captured without mutation"
-                  },
-                  {
-                    "driver": "llm",
-                    "label": "Verify presence of 'Edit Filter' on the committed dataset row",
-                    "action_type": "verify_state",
-                    "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' shows an Edit Filter / filter-pencil control (or explicit absence message).",
-                    "input_text": "",
-                    "expected_signal": "Visible and actionable 'Edit Filter' control for dataset row 'Household Expenditure Village Jakarta 2024' (or explicit 'no edit filter' message).",
-                    "rationale": "Before attempting to open the filter editor, confirm the Data Selection row for 'Household Expenditure Village Jakarta 2024' has an Edit Filter affordance (button/icon) so we can reopen the existing filter editor.",
-                    "priority": 1,
-                    "observed_signal": "State captured without mutation",
-                    "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354365816-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-                    "reason": "State captured without mutation"
-                  },
-                  {
-                    "driver": "llm",
-                    "label": "Select aggregation 'Administrative Area'",
+                    "label": "Select aggregation: Administrative Area",
                     "action_type": "select_aggregation",
-                    "target_text": "Administrative Area",
+                    "target_text": "Aggregation selector",
                     "input_text": "Administrative Area",
-                    "expected_signal": "Aggregation 'Administrative Area' becomes selected and Dataset Explorer updates (cards refresh). Preferred dataset 'Household Expenditure Village Jakarta 2024' appears in the candidate list or an explicit 'no results' message is shown.",
-                    "rationale": "Ensure Dataset Explorer is scoped to Administrative Area datasets so the preferred Village-level dataset appears without needing the search input.",
+                    "expected_signal": "Aggregation changed to 'Administrative Area' and Data Selection shows 'Household Expenditure Village Jakarta 2024' with edit/filter controls (edit icon or overflow menu) and saved filter cards visible",
+                    "rationale": "Aggregation is blank — set to Administrative Area (deeper than City/District for village-level dataset) to restore the Data Selection row's edit/filter controls so you can reopen the existing filter editor.",
                     "priority": 1,
                     "observed_signal": "aggregation selected=-",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354394809-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356780767-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
                     "reason": ""
-                  },
-                  {
-                    "driver": "llm",
-                    "label": "Select dataset row 'Household Expenditure Village Jakarta 2024'",
-                    "action_type": "select_dataset",
-                    "target_text": "Household Expenditure Village Jakarta 2024",
-                    "input_text": "Household Expenditure Village Jakarta 2024",
-                    "expected_signal": "The dataset row becomes selected and the Edit Filter control or the filter editor opens showing the dataset's saved filter cards (or an explicit message if no editor is available).",
-                    "rationale": "Selecting the committed dataset row should surface the Edit Filter control or open the dataset details, allowing us to reopen the existing filter editor to verify saved filter cards.",
-                    "priority": 1,
-                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
-                    "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354412798-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
-                    "clicked": false,
-                    "candidateTitle": "Household Expenditure Village Jakarta 2024",
-                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
                   }
                 ],
                 "screenshots": [
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354046547-workflow-dataset-explorer-edit-existing-filter-landing.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354060718-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354075197-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354089627-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354111668-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354126149-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354174989-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354196141-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354227569-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354249556-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354290507-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354306660-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354322925-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354343003-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354365816-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354394809-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354412798-workflow-dataset-explorer-edit-existing-filter-select-dataset.png"
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356412079-workflow-dataset-explorer-edit-existing-filter-landing.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356424716-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356434712-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356448164-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356463248-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356475084-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356518982-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356520934-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356543416-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356554499-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356597021-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356612533-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356629984-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356644499-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356660082-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356675902-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356689266-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356706849-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356727016-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356742401-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356780767-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png"
                 ],
                 "driver": "llm",
                 "tableVerification": {
                   "opened": true,
                   "openReason": "",
                   "verified": true,
-                  "summary": "Province filter matched every visible row in column Province Namestring. Checked 80 rows across 8 pages. Numeric filter matched every visible row in column Household Expenditurefloat. Checked 80 rows across 8 pages. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
+                  "summary": "Province filter matched every visible row in column Province Namestring. Checked 80 rows across 8 pages. Numeric filter matched every visible row in column Household Expenditurefloat. Checked 80 rows across 8 pages. Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
                   "confidence": 1,
-                  "checkedColumn": "Province Namestring, Household Expenditurefloat, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                  "checkedValue": "DKI Jakarta, 0 - 999999999, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
+                  "checkedColumn": "Province Namestring, Household Expenditurefloat, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
+                  "checkedValue": "DKI Jakarta, 0 - 999999999, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
                   "suspectedIssue": "",
                   "sample": {
                     "title": "Household Expenditure Village Jakarta 2024",
@@ -6584,7 +6636,7 @@
                     "totalPagesRead": 8,
                     "truncated": true
                   },
-                  "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354174989-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
+                  "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356518982-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
                   "closed": false,
                   "titleAliases": [
                     "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
@@ -6626,61 +6678,21 @@
                   },
                   "mapDetailVerification": {
                     "attempted": true,
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354196141-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356520934-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
                     "preview": {
-                      "opened": true,
-                      "title": "Household Expenditure Village Jakarta 2024",
-                      "fields": [
-                        {
-                          "label": "Household Expenditure",
-                          "value": "111,196,354.273"
-                        },
-                        {
-                          "label": "Household Food Expenditure",
-                          "value": "42,976,034.217"
-                        },
-                        {
-                          "label": "Household Non Food Expenditure",
-                          "value": "68,220,307.586"
-                        },
-                        {
-                          "label": "District Name",
-                          "value": "KRAMATJATI"
-                        },
-                        {
-                          "label": "District Code",
-                          "value": "317504"
-                        },
-                        {
-                          "label": "City Name",
-                          "value": "JAKARTA TIMUR"
-                        }
-                      ],
-                      "lines": [
-                        "Household Expenditure Village Jakarta 2024",
-                        "Household Expenditure",
-                        "111,196,354.273",
-                        "Household Food Expenditure",
-                        "42,976,034.217",
-                        "Household Non Food Expenditure",
-                        "68,220,307.586",
-                        "District Name",
-                        "KRAMATJATI",
-                        "District Code",
-                        "317504",
-                        "City Name",
-                        "JAKARTA TIMUR",
-                        "Expand"
-                      ]
+                      "opened": false,
+                      "title": "",
+                      "fields": [],
+                      "lines": []
                     },
                     "previewCheck": {
-                      "verified": true,
-                      "inconclusive": false,
-                      "summary": "Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
-                      "confidence": 1,
-                      "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                      "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
-                      "suspected_issue": "",
+                      "verified": false,
+                      "inconclusive": true,
+                      "summary": "Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page.",
+                      "confidence": 0,
+                      "checked_column": "",
+                      "checked_value": "",
+                      "suspected_issue": "Insufficient overlap between map detail fields and table row",
                       "notes": []
                     },
                     "mapClick": {
@@ -6728,8 +6740,10 @@
                         "JAKARTA TIMUR",
                         "Expand"
                       ],
-                      "clickPoint": null,
-                      "reason": ""
+                      "clickPoint": {
+                        "x": 1684,
+                        "y": 500
+                      }
                     },
                     "mapClickCheck": {
                       "verified": true,
@@ -6743,10 +6757,10 @@
                     },
                     "verified": true,
                     "inconclusive": false,
-                    "summary": "Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
+                    "summary": "Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
                     "confidence": 1,
-                    "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                    "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
+                    "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
+                    "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
                     "suspected_issue": "",
                     "notes": []
                   }
@@ -6762,28 +6776,28 @@
                 "triedCandidates": [
                   "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta."
                 ],
-                "contextScreenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354046547-workflow-dataset-explorer-edit-existing-filter-landing.png",
+                "contextScreenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356412079-workflow-dataset-explorer-edit-existing-filter-landing.png",
                 "llmGuidance": {
-                  "summary": "Select the committed dataset row 'Household Expenditure Village Jakarta 2024' to open its filter/editor controls.",
-                  "progress_assessment": "Aggregation 'Administrative Area' already selected. The dataset appears committed (Data Selection row and a visibility toggle are visible in the UI excerpt), but no dataset is currently selected and no filter editor is open.",
-                  "suspected_issue": "Search input is currently not editable (previous attempt failed). Prefer opening the existing dataset row rather than searching again.",
-                  "retry_recommended": false,
+                  "summary": "Try searching for the committed dataset to surface an interactive row or edit controls.",
+                  "progress_assessment": "No dataset is active; attempts to click the row and overflow failed. Edit/filter controls not reachable from the visible row; Data Selection shows the title text but the row is not interactive.",
+                  "suspected_issue": "Dataset row is visible but not clickable (possibly a UI overlay, stale list view, or the dataset is rendered in a non-interactive summary). Overflow menu also not clickable, so edit controls are currently unreachable.",
+                  "retry_recommended": true,
                   "stop_reason": "",
                   "actions": [
                     {
-                      "label": "Select dataset row 'Household Expenditure Village Jakarta 2024'",
-                      "rationale": "Selecting the committed dataset row should surface the Edit Filter control or open the dataset details, allowing us to reopen the existing filter editor to verify saved filter cards.",
-                      "action_type": "select_dataset",
-                      "target_text": "Household Expenditure Village Jakarta 2024",
+                      "label": "Search for the dataset to surface an interactive row",
+                      "rationale": "Filtering the Dataset Explorer list to the exact title may render a dedicated, interactive row or reveal the edit/filter control if the current view is non-interactive or scrolled out of an actionable list.",
+                      "action_type": "search_dataset",
+                      "target_text": "Dataset Explorer search input",
                       "input_text": "Household Expenditure Village Jakarta 2024",
                       "priority": 1,
-                      "expected_signal": "The dataset row becomes selected and the Edit Filter control or the filter editor opens showing the dataset's saved filter cards (or an explicit message if no editor is available)."
+                      "expected_signal": "Search results show the dataset as a selectable row (row highlights or selection becomes possible) and an edit/filter control (edit icon, three-dot menu, or inline saved-filter card) becomes visible and interactive for that row."
                     }
                   ]
                 },
                 "selectedCandidate": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                "error": "Planner budget exhausted for Administrative Area",
-                "notes": "Planner deadline exceeded before success or a clear blocker.",
+                "error": "Branch did not reach a committed success state: Administrative Area",
+                "notes": "Branch did not reach a committed success state: Administrative Area",
                 "url": "https://preprod.lokasi.com/intelligence",
                 "title": "Spatial Analysis - LOKASI",
                 "reconciliation": {
@@ -6836,7 +6850,7 @@
                     "priority": 0,
                     "observed_signal": "active dataset=Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354463051-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356829581-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
                     "clicked": true,
                     "candidateTitle": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "reason": ""
@@ -6852,7 +6866,7 @@
                     "priority": 0,
                     "observed_signal": "province selected=yes",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354484055-workflow-dataset-explorer-delete-existing-filter-choose-province.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356841313-workflow-dataset-explorer-delete-existing-filter-choose-province.png",
                     "provinceSelected": true,
                     "selection": "DKI Jakarta",
                     "province": "DKI Jakarta",
@@ -6870,7 +6884,7 @@
                     "priority": 0,
                     "observed_signal": "attrFilter=applied",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354506936-workflow-dataset-explorer-delete-existing-filter-apply-attribute-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356861933-workflow-dataset-explorer-delete-existing-filter-apply-attribute-filter.png",
                     "attributeFilter": {
                       "attempted": true,
                       "applied": true,
@@ -6896,7 +6910,7 @@
                     "priority": 0,
                     "observed_signal": "Success toast observed; committed-state verification deferred to post-add reconciliation.",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354520186-workflow-dataset-explorer-delete-existing-filter-add-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356874962-workflow-dataset-explorer-delete-existing-filter-add-dataset.png",
                     "addDataset": {
                       "attempted": true,
                       "added": true,
@@ -6920,7 +6934,7 @@
                     "priority": 0,
                     "observed_signal": "Loaded dataset row not found in Data Selection",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354612004-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356944733-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
                     "editFilterVerification": {
                       "attempted": true,
                       "opened": false,
@@ -6941,7 +6955,7 @@
                     "priority": 0,
                     "observed_signal": "Loaded dataset row not found in Data Selection",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354626253-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356954934-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
                     "editFilterVerification": {
                       "attempted": true,
                       "opened": false,
@@ -6953,149 +6967,213 @@
                   },
                   {
                     "driver": "llm",
-                    "label": "Re-select committed dataset in Data Selection",
+                    "label": "Re-select dataset in Data Selection",
                     "action_type": "select_dataset",
                     "target_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "input_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                    "expected_signal": "Data Selection shows the dataset row with its committed state (Edit / filter controls or saved filter card visible)",
-                    "rationale": "Restore the last selected dataset so the existing filter editor can be reopened and a saved filter card deleted. This is the minimal safe recovery after an explorer reset.",
+                    "expected_signal": "data_selection_row_present",
+                    "rationale": "Restore the last dataset selection so the existing committed filter card becomes editable (smallest safe recovery). The runner previously added this dataset but Data Selection row was not found.",
                     "priority": 1,
                     "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354642378-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356977858-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
                     "clicked": false,
                     "candidateTitle": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
                     "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta."
                   },
                   {
                     "driver": "llm",
-                    "label": "Verify Data Selection / Dataset Explorer state",
+                    "label": "Verify Data Selection loaded rows",
                     "action_type": "verify_state",
-                    "target_text": "Data Selection & Dataset Explorer UI",
+                    "target_text": "Data Selection loaded dataset rows (look for Household Expenditure Village Jakarta 2024)",
                     "input_text": "",
-                    "expected_signal": "Either (a) the committed dataset row for 'Household Expenditure Village Jakarta 2024' is visible and clickable in Data Selection with Edit / filter controls or saved filter cards, or (b) evidence that Dataset Explorer is closed or not rendering candidate rows so next step can reopen it.",
-                    "rationale": "Confirm whether the committed dataset row for 'Household Expenditure Village Jakarta 2024' is present and clickable (so we can open its Attribute Filter). If the explorer is closed, this will reveal that and allow a reopen step next.",
+                    "expected_signal": "Committed dataset rows are visible and at least one is clickable; the Household Expenditure Village Jakarta 2024 row is present and can be expanded to open the Attribute Filter editor.",
+                    "rationale": "Non-destructive check to confirm the committed dataset row is present and clickable in Data Selection before attempting to open its Attribute Filter editor.",
                     "priority": 1,
                     "observed_signal": "State captured without mutation",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354661687-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356994317-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
                     "reason": "State captured without mutation"
                   },
                   {
                     "driver": "llm",
-                    "label": "Select aggregation: Administrative Area",
-                    "action_type": "select_aggregation",
-                    "target_text": "Administrative Area",
-                    "input_text": "Administrative Area",
-                    "expected_signal": "Dataset Explorer shows Administrative Area candidate cards (at least one unlocked candidate appears), and selectedAggregation becomes 'Administrative Area'.",
-                    "rationale": "Begin the add-flow by choosing the Administrative Area aggregation so candidate dataset cards (including the preferred Village-level dataset) load into Dataset Explorer.",
-                    "priority": 1,
-                    "observed_signal": "aggregation selected=-",
-                    "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354689236-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
-                    "reason": ""
-                  },
-                  {
-                    "driver": "llm",
-                    "label": "Search for preferred dataset",
+                    "label": "Search for dataset Household Expenditure Village Jakarta 2024",
                     "action_type": "search_dataset",
                     "target_text": "Household Expenditure Village Jakarta 2024",
                     "input_text": "Household Expenditure Village Jakarta 2024",
-                    "expected_signal": "Dataset Explorer shows a candidate card titled 'Household Expenditure Village Jakarta 2024' (unlocked preferred candidate) and the card is clickable/selectable so we can open its Attribute Filter from Data Selection.",
-                    "rationale": "Bring the specific Administrative Area dataset into view so its card can be selected and its Attribute Filter (saved filter cards) opened. Previous attempt to click the dataset failed because it was not clickable/visible.",
+                    "expected_signal": "Search results show an unlocked candidate card titled 'Household Expenditure Village Jakarta 2024' (or any matching variants) in Dataset Explorer.",
+                    "rationale": "Locate the preferred dataset in Dataset Explorer so it can be selected/added and its Attribute Filter editor reopened. This recovers from the missing Data Selection row by re-finding the dataset in the library.",
                     "priority": 1,
                     "observed_signal": "Search input was not editable",
                     "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354705743-workflow-dataset-explorer-delete-existing-filter-search-dataset.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357012123-workflow-dataset-explorer-delete-existing-filter-search-dataset.png",
                     "reason": "Search input was not editable"
                   },
                   {
                     "driver": "llm",
-                    "label": "Re-select committed dataset in Data Selection",
-                    "action_type": "select_dataset",
-                    "target_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                    "input_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                    "expected_signal": "Data Selection shows the dataset row for 'Household Expenditure Village Jakarta 2024' in committed state and the row is clickable (Edit / filter controls or saved filter card visible).",
-                    "rationale": "Restore selection of the already-present 'Household Expenditure Village Jakarta 2024' dataset so its Edit / filter controls or saved filter cards become available and we can reopen the existing filter editor to delete a saved filter.",
-                    "priority": 1,
-                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                    "step_status": "failed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354723088-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
-                    "clicked": false,
-                    "candidateTitle": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta."
-                  },
-                  {
-                    "driver": "llm",
-                    "label": "Select aggregation: Administrative Area",
+                    "label": "Select aggregation Administrative Area",
                     "action_type": "select_aggregation",
                     "target_text": "Administrative Area",
                     "input_text": "Administrative Area",
-                    "expected_signal": "Aggregation control shows 'Administrative Area' selected and Data Selection lists dataset cards (including the recently added Household Expenditure Village Jakarta 2024)",
-                    "rationale": "Restore the explorer intent (Administrative Area) so the committed dataset row and its saved filter card become available in Data Selection for editing/deletion.",
+                    "expected_signal": "Dataset Explorer shows candidate cards for Administrative Area aggregation (including any unlocked 'Village' Administrative Area datasets such as 'Household Expenditure Village Jakarta 2024').",
+                    "rationale": "Limit results to Administrative Area datasets (preferred aggregation for the target Household Expenditure Village dataset) so the dataset card can appear and be selected.",
                     "priority": 1,
                     "observed_signal": "aggregation selected=-",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354758423-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357033973-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
                     "reason": ""
                   },
                   {
                     "driver": "llm",
-                    "label": "Verify dataset row clickable state",
+                    "label": "Verify Data Selection row presence and clickability",
                     "action_type": "verify_state",
-                    "target_text": "Household Expenditure Village Jakarta 2024 dataset row is present and clickable in Data Selection",
+                    "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' is present and clickable; Attribute Filter edit affordance is visible.",
                     "input_text": "",
-                    "expected_signal": "UI shows a committed row for 'Household Expenditure Village Jakarta 2024' with an Edit or filter affordance visible and the row is reported clickable; or the UI shows the row but it is disabled/non-interactive (explicit disabled state or overlay).",
-                    "rationale": "Confirm whether the committed dataset row exists and is interactable so we can open its Edit / filter controls. If not clickable, we will know to retry selecting the Administrative Area aggregation or reopen Dataset Explorer.",
+                    "expected_signal": "Committed dataset row is visible and at least one control (row expand or edit filter) is clickable; the Attribute Filter editor affordance appears when row is expanded.",
+                    "rationale": "Confirm the committed dataset row exists and is expandable so we can open its Attribute Filter editor (smallest safe recovery). If clickable, next step will be selecting it to open the filter editor; if not, we will know a UI obstruction is present.",
                     "priority": 1,
                     "observed_signal": "State captured without mutation",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354774035-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357052473-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
                     "reason": "State captured without mutation"
                   },
                   {
                     "driver": "llm",
-                    "label": "Verify dataset row edit/filter affordance",
+                    "label": "Select dataset 'Household Expenditure Village Jakarta 2024'",
+                    "action_type": "select_dataset",
+                    "target_text": "Household Expenditure Village Jakarta 2024",
+                    "input_text": "Household Expenditure Village Jakarta 2024",
+                    "expected_signal": "Candidate card titled 'Household Expenditure Village Jakarta 2024' becomes highlighted/active; selection reveals any province or attribute-filter prerequisites and Add Dataset remains enabled.",
+                    "rationale": "Choose the preferred Administrative Area (Village) dataset so it can be added and its Attribute Filter editor reopened from Data Selection later.",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357070636-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Household Expenditure Village Jakarta 2024",
+                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Expand committed dataset row to reveal Attribute Filter editor",
+                    "action_type": "select_dataset",
+                    "target_text": "Household Expenditure Village Jakarta 2024 (1)",
+                    "input_text": "Household Expenditure Village Jakarta 2024 (1)",
+                    "expected_signal": "The Data Selection row for 'Household Expenditure Village Jakarta 2024 (1)' expands; an Attribute Filter edit affordance appears and saved filter cards (if any) are visible and actionable.",
+                    "rationale": "Selecting the committed dataset row is the safest path to access the Attribute Filter editor to delete an existing saved filter since library selection is currently blocked.",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024 (1)",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357088183-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Household Expenditure Village Jakarta 2024 (1)",
+                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024 (1)"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Re-select Administrative Area aggregation",
+                    "action_type": "select_aggregation",
+                    "target_text": "Administrative Area",
+                    "input_text": "Administrative Area",
+                    "expected_signal": "Data Selection shows 'Administrative Area' as active (rows for the added dataset visible) and the attribute filter edit button is available.",
+                    "rationale": "Restore the explorer intent so Data Selection shows administrative-area rows and the existing filter editor affordance becomes available to delete a saved filter card.",
+                    "priority": 1,
+                    "observed_signal": "aggregation selected=-",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357118089-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
+                    "reason": ""
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Verify Attribute Filter edit affordance on committed row",
                     "action_type": "verify_state",
-                    "target_text": "Household Expenditure Village Jakarta 2024 — check for Edit/Filters affordance or explicit disabled state",
+                    "target_text": "Attribute Filter edit affordance for 'Household Expenditure Village Jakarta 2024 (1)'",
                     "input_text": "",
-                    "expected_signal": "UI shows the committed dataset row for 'Household Expenditure Village Jakarta 2024' with either (a) an Edit / Filters button or visible saved filter card(s) and the row is clickable, or (b) an explicit disabled/non-interactive state or overlay that prevents editing.",
-                    "rationale": "Confirm whether the committed dataset row for 'Household Expenditure Village Jakarta 2024' is interactable (Edit / Filters / saved filter cards visible). This determines whether we can proceed to open the filter editor to delete an existing saved filter.",
+                    "expected_signal": "An edit-filter button/icon or row-expand control is visible and reported clickable for the 'Household Expenditure Village Jakarta 2024 (1)' Data Selection row; if not, UI blockers or disabled state are reported (e.g., overlay, disabled control, or missing affordance).",
+                    "rationale": "Confirm the edit filter control is visible and clickable on the committed Data Selection row so we can open the saved-filter editor and delete a saved filter card. If not visible, identify the blocker before attempting selection.",
                     "priority": 1,
                     "observed_signal": "State captured without mutation",
                     "step_status": "passed",
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354793850-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357138654-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Expand committed dataset row to reveal Attribute Filter editor",
+                    "action_type": "select_dataset",
+                    "target_text": "Household Expenditure Village Jakarta 2024 (1)",
+                    "input_text": "Household Expenditure Village Jakarta 2024 (1)",
+                    "expected_signal": "The Data Selection row for 'Household Expenditure Village Jakarta 2024 (1)' expands or highlights and an Attribute Filter edit button/icon or saved-filter cards become visible and reported clickable.",
+                    "rationale": "Open the already-committed 'Household Expenditure Village Jakarta 2024 (1)' Data Selection row so the Attribute Filter edit affordance and saved filter cards become visible and actionable for deletion. Retry despite earlier failure; this is the minimal required step to reach the delete-flow.",
+                    "priority": 1,
+                    "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024 (1)",
+                    "step_status": "failed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357155186-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                    "clicked": false,
+                    "candidateTitle": "Household Expenditure Village Jakarta 2024 (1)",
+                    "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024 (1)"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Check clickability/blocker on committed dataset row",
+                    "action_type": "verify_state",
+                    "target_text": "Household Expenditure Village Jakarta 2024 (1) — verify row clickability and presence of blockers/overlays",
+                    "input_text": "",
+                    "expected_signal": "The Data Selection row for 'Household Expenditure Village Jakarta 2024 (1)' is reported as clickable OR a visible blocker/overlay/disabled state is reported (e.g., top-layer dialog, disabled row, or cover).",
+                    "rationale": "Avoid repeating failed clicks; detect whether the row is actually clickable or blocked (overlay/disabled) so the next step can either retry selection or clear the blocker.",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357169990-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                    "reason": "State captured without mutation"
+                  },
+                  {
+                    "driver": "llm",
+                    "label": "Verify clickability and detect visible blockers for committed row",
+                    "action_type": "verify_state",
+                    "target_text": "Household Expenditure Village Jakarta 2024 (1) — check row clickability and any overlay/disabled UI",
+                    "input_text": "",
+                    "expected_signal": "Report indicates the row is clickable OR identifies a visible blocker/overlay/disabled state (e.g., modal, top-layer panel, disabled control, or off-screen) with a screenshot or DOM hint.",
+                    "rationale": "Confirm whether the 'Household Expenditure Village Jakarta 2024 (1)' row is clickable or if an overlay/disabled state is blocking interaction; this informs the safe next recovery step (dismiss overlay, scroll into view, or retry selection).",
+                    "priority": 1,
+                    "observed_signal": "State captured without mutation",
+                    "step_status": "passed",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357182417-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
                     "reason": "State captured without mutation"
                   }
                 ],
                 "screenshots": [
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354450133-workflow-dataset-explorer-delete-existing-filter-landing.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354463051-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354484055-workflow-dataset-explorer-delete-existing-filter-choose-province.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354506936-workflow-dataset-explorer-delete-existing-filter-apply-attribute-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354520186-workflow-dataset-explorer-delete-existing-filter-add-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354565250-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354583960-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354612004-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354626253-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354642378-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354661687-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354689236-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354705743-workflow-dataset-explorer-delete-existing-filter-search-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354723088-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354758423-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354774035-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
-                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354793850-workflow-dataset-explorer-delete-existing-filter-verify-state.png"
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356816984-workflow-dataset-explorer-delete-existing-filter-landing.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356829581-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356841313-workflow-dataset-explorer-delete-existing-filter-choose-province.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356861933-workflow-dataset-explorer-delete-existing-filter-apply-attribute-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356874962-workflow-dataset-explorer-delete-existing-filter-add-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356919221-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356921342-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356944733-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356954934-workflow-dataset-explorer-delete-existing-filter-open-edit-filter.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356977858-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356994317-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357012123-workflow-dataset-explorer-delete-existing-filter-search-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357033973-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357052473-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357070636-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357088183-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357118089-workflow-dataset-explorer-delete-existing-filter-select-aggregation.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357138654-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357155186-workflow-dataset-explorer-delete-existing-filter-select-dataset.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357169990-workflow-dataset-explorer-delete-existing-filter-verify-state.png",
+                  "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774357182417-workflow-dataset-explorer-delete-existing-filter-verify-state.png"
                 ],
                 "driver": "llm",
                 "tableVerification": {
                   "opened": true,
                   "openReason": "",
                   "verified": true,
-                  "summary": "Province filter matched every visible row in column Province Namestring. Checked 80 rows across 8 pages. Numeric filter matched every visible row in column Household Expenditurefloat. Checked 80 rows across 8 pages. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
+                  "summary": "Province filter matched every visible row in column Province Namestring. Checked 80 rows across 8 pages. Numeric filter matched every visible row in column Household Expenditurefloat. Checked 80 rows across 8 pages. Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
                   "confidence": 1,
-                  "checkedColumn": "Province Namestring, Household Expenditurefloat, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                  "checkedValue": "DKI Jakarta, 0 - 999999999, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
+                  "checkedColumn": "Province Namestring, Household Expenditurefloat, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
+                  "checkedValue": "DKI Jakarta, 0 - 999999999, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
                   "suspectedIssue": "",
                   "sample": {
                     "title": "Household Expenditure Village Jakarta 2024 (1)",
@@ -13116,7 +13194,7 @@
                     "totalPagesRead": 8,
                     "truncated": true
                   },
-                  "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354565250-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
+                  "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356919221-workflow-dataset-explorer-administrative-area-immediate-data-table.png",
                   "closed": false,
                   "titleAliases": [
                     "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
@@ -13158,61 +13236,21 @@
                   },
                   "mapDetailVerification": {
                     "attempted": true,
-                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354583960-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
+                    "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356921342-workflow-dataset-explorer-administrative-area-immediate-map-detail.png",
                     "preview": {
-                      "opened": true,
-                      "title": "Household Expenditure Village Jakarta 2024 (1)",
-                      "fields": [
-                        {
-                          "label": "Household Expenditure",
-                          "value": "111,196,354.273"
-                        },
-                        {
-                          "label": "Household Food Expenditure",
-                          "value": "42,976,034.217"
-                        },
-                        {
-                          "label": "Household Non Food Expenditure",
-                          "value": "68,220,307.586"
-                        },
-                        {
-                          "label": "District Name",
-                          "value": "KRAMATJATI"
-                        },
-                        {
-                          "label": "District Code",
-                          "value": "317504"
-                        },
-                        {
-                          "label": "City Name",
-                          "value": "JAKARTA TIMUR"
-                        }
-                      ],
-                      "lines": [
-                        "Household Expenditure Village Jakarta 2024 (1)",
-                        "Household Expenditure",
-                        "111,196,354.273",
-                        "Household Food Expenditure",
-                        "42,976,034.217",
-                        "Household Non Food Expenditure",
-                        "68,220,307.586",
-                        "District Name",
-                        "KRAMATJATI",
-                        "District Code",
-                        "317504",
-                        "City Name",
-                        "JAKARTA TIMUR",
-                        "Expand"
-                      ]
+                      "opened": false,
+                      "title": "",
+                      "fields": [],
+                      "lines": []
                     },
                     "previewCheck": {
-                      "verified": true,
-                      "inconclusive": false,
-                      "summary": "Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
-                      "confidence": 1,
-                      "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                      "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
-                      "suspected_issue": "",
+                      "verified": false,
+                      "inconclusive": true,
+                      "summary": "Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page.",
+                      "confidence": 0,
+                      "checked_column": "",
+                      "checked_value": "",
+                      "suspected_issue": "Insufficient overlap between map detail fields and table row",
                       "notes": []
                     },
                     "mapClick": {
@@ -13260,8 +13298,10 @@
                         "JAKARTA TIMUR",
                         "Expand"
                       ],
-                      "clickPoint": null,
-                      "reason": ""
+                      "clickPoint": {
+                        "x": 1684,
+                        "y": 500
+                      }
                     },
                     "mapClickCheck": {
                       "verified": true,
@@ -13275,10 +13315,10 @@
                     },
                     "verified": true,
                     "inconclusive": false,
-                    "summary": "Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
+                    "summary": "Map detail panel opened, but there were not enough overlapping fields to compare against the tabular row. Checked 1 rows across 1 page. Map detail panel matched the selected tabular row for the visible overlapping fields. Checked 1 rows across 1 page.",
                     "confidence": 1,
-                    "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring, Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
-                    "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR, 111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
+                    "checked_column": "Household Expenditurefloat, Household Food Expenditurefloat, Household Non Food Expenditurefloat, District Namestring, District Codestring, City Namestring",
+                    "checked_value": "111,196,354.272, 42,976,034.216, 68,220,307.585, KRAMATJATI, 317504, JAKARTA TIMUR",
                     "suspected_issue": "",
                     "notes": []
                   }
@@ -13294,28 +13334,28 @@
                 "triedCandidates": [
                   "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta."
                 ],
-                "contextScreenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354450133-workflow-dataset-explorer-delete-existing-filter-landing.png",
+                "contextScreenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356816984-workflow-dataset-explorer-delete-existing-filter-landing.png",
                 "llmGuidance": {
-                  "summary": "Retry selecting the committed 'Household Expenditure Village Jakarta 2024' dataset row so its Edit/Filters affordance and saved filter cards become available for deleting an existing saved filter.",
-                  "progress_assessment": "Aggregation was set to Administrative Area. The committed dataset row exists in Data Selection but a prior attempt to click it failed (row reported non-interactive). We need to re-attempt selection to open its filter editor.",
-                  "suspected_issue": "Committed dataset row previously non-clickable or overlaid, preventing access to Edit/Filters. This is the likely blocker preventing deletion of a saved filter.",
+                  "summary": "Detect why the committed Data Selection row ('Household Expenditure Village Jakarta 2024 (1)') is not clickable before attempting to open its Attribute Filter editor.",
+                  "progress_assessment": "Committed dataset row is present but previous select_dataset failed (dataset reported not clickable). Need to identify a visible blocker (overlay/disabled state/out-of-view) before proceeding to open the edit filter and delete a saved filter.",
+                  "suspected_issue": "The Data Selection row is present but currently not clickable — likely covered by a top-layer overlay/dialog, disabled state, or hit-target out-of-view. This is preventing expansion of the row to access the Attribute Filter editor.",
                   "retry_recommended": true,
                   "stop_reason": "",
                   "actions": [
                     {
-                      "label": "Select committed dataset row in Data Selection",
-                      "rationale": "Open the dataset's Edit / Filters controls to access saved filter cards so one can be deleted. A prior select attempt failed due to the row being non-interactive, so retry selection now.",
-                      "action_type": "select_dataset",
-                      "target_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                      "input_text": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
+                      "label": "Verify clickability and detect visible blockers for committed row",
+                      "rationale": "Confirm whether the 'Household Expenditure Village Jakarta 2024 (1)' row is clickable or if an overlay/disabled state is blocking interaction; this informs the safe next recovery step (dismiss overlay, scroll into view, or retry selection).",
+                      "action_type": "verify_state",
+                      "target_text": "Household Expenditure Village Jakarta 2024 (1) — check row clickability and any overlay/disabled UI",
+                      "input_text": "",
                       "priority": 1,
-                      "expected_signal": "Data Selection shows the dataset row for 'Household Expenditure Village Jakarta 2024' in committed state and the row is clickable; an Edit / Filters button or visible saved filter card(s) appears, allowing the filter editor to be opened."
+                      "expected_signal": "Report indicates the row is clickable OR identifies a visible blocker/overlay/disabled state (e.g., modal, top-layer panel, disabled control, or off-screen) with a screenshot or DOM hint."
                     }
                   ]
                 },
                 "selectedCandidate": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
-                "error": "No executable guarded action remained for Administrative Area",
-                "notes": "Retry selecting the committed 'Household Expenditure Village Jakarta 2024' dataset row so its Edit/Filters affordance and saved filter cards become available for deleting an existing saved filter.",
+                "error": "Branch did not reach a committed success state: Administrative Area",
+                "notes": "Branch did not reach a committed success state: Administrative Area",
                 "url": "https://preprod.lokasi.com/intelligence",
                 "title": "Spatial Analysis - LOKASI",
                 "reconciliation": {
@@ -13342,63 +13382,36 @@
   ],
   "errors": [],
   "globalVersionHints": [
-    "Presence of 'Analysis Job Queue' suggests asynchronous job processing feature set",
-    "'Draw Polygon' and 'Recenter Map' indicate a map-first UI with client-side drawing tools",
-    "Separate 'Dataset Explorer' and 'Dataset Management' imply role separation between dataset browsing and administrative dataset operations"
+    "Page title 'Spatial Analysis - LOKASI' and pathname '/intelligence'",
+    "Presence of controls: Analysis, Dataset Explorer, Dataset Management, Analysis Job Queue, Draw Polygon, Recenter Map, Search",
+    "Visible map label or search result text: '4 Street'"
   ],
   "globalFeatures": [
     {
-      "name": "Map canvas with selectable features/labels",
-      "description": "Central map displays geographic features and labels (e.g., '4 Street') and supports recentering.",
-      "why_this_feature": "The body text shows '4 Street' and there is a 'Recenter Map' control, implying a visible map and selectable map features.",
+      "name": "Analysis launcher",
+      "description": "Button/entry to create and run spatial analyses against selected datasets or map extents.",
+      "why_this_feature": "Presence of an 'Analysis' control and 'Analysis Job Queue' indicates ability to run and queue analytical tasks.",
       "confidence": 0.95,
-      "risk_level": "medium",
-      "important_actions": [
-        "Recenter map",
-        "Click/select map features",
-        "Verify label corresponds to geometry"
-      ],
-      "tier": "main",
-      "featureGroup": "Spatial Analysis",
-      "page": "https://preprod.lokasi.com/intelligence"
-    },
-    {
-      "name": "Draw Polygon / area selection tool",
-      "description": "Tool to draw polygons on the map to define analysis areas.",
-      "why_this_feature": "A 'Draw Polygon' button is present, indicating polygon selection is required to scope analyses.",
-      "confidence": 0.9,
-      "risk_level": "medium",
-      "important_actions": [
-        "Activate Draw Polygon and create a polygon",
-        "Confirm polygon geometry is displayed and editable"
-      ],
-      "tier": "main",
-      "featureGroup": "Spatial Analysis",
-      "page": "https://preprod.lokasi.com/intelligence"
-    },
-    {
-      "name": "Analysis run/control panel",
-      "description": "Control to initiate spatial analyses against selected area/datasets.",
-      "why_this_feature": "An 'Analysis' button exists, implying a workflow to run analyses from the page.",
-      "confidence": 0.9,
       "risk_level": "high",
       "important_actions": [
-        "Click Analysis to open analysis options",
-        "Start an analysis and verify job creation"
+        "Open Analysis flow",
+        "Start a new analysis job with a selected area/dataset",
+        "Verify job appears in Analysis Job Queue"
       ],
       "tier": "main",
       "featureGroup": "Spatial Analysis",
       "page": "https://preprod.lokasi.com/intelligence"
     },
     {
-      "name": "Analysis Job Queue / job monitoring",
-      "description": "Interface to view status of queued/running analysis jobs.",
-      "why_this_feature": "An 'Analysis Job Queue' control is visible, indicating asynchronous job handling and status monitoring.",
-      "confidence": 0.9,
+      "name": "Analysis Job Queue",
+      "description": "List or queue UI where running/completed analysis jobs are monitored.",
+      "why_this_feature": "Explicit 'Analysis Job Queue' control is visible.",
+      "confidence": 0.98,
       "risk_level": "high",
       "important_actions": [
-        "Open Job Queue to verify running/completed jobs",
-        "Cancel or inspect job details if available"
+        "Open queue and confirm job states (running, completed, failed)",
+        "Inspect job details/logs",
+        "Cancel or retry a job if controls exist"
       ],
       "tier": "main",
       "featureGroup": "Project Management",
@@ -13406,13 +13419,13 @@
     },
     {
       "name": "Dataset Explorer",
-      "description": "Browse and preview available spatial datasets to use in analyses.",
-      "why_this_feature": "A 'Dataset Explorer' button implies users can select datasets for analysis.",
-      "confidence": 0.85,
-      "risk_level": "high",
+      "description": "Browse and select datasets to use in analyses or to display on the map.",
+      "why_this_feature": "'Dataset Explorer' button is present alongside dataset management tools.",
+      "confidence": 0.9,
+      "risk_level": "medium",
       "important_actions": [
-        "Open Dataset Explorer and select a dataset",
-        "Confirm dataset attributes/preview are shown"
+        "Open Dataset Explorer and verify dataset list loads",
+        "Select a dataset and confirm it can be added to map or used in analysis"
       ],
       "tier": "main",
       "featureGroup": "Dataset Explorer",
@@ -13420,84 +13433,97 @@
     },
     {
       "name": "Dataset Management",
-      "description": "Administrative controls to add/remove or configure datasets.",
-      "why_this_feature": "A 'Dataset Management' button suggests dataset CRUD or configuration capabilities.",
-      "confidence": 0.8,
+      "description": "Administrative UI for creating/updating/deleting datasets used by analyses.",
+      "why_this_feature": "'Dataset Management' control suggests dataset CRUD capabilities.",
+      "confidence": 0.85,
       "risk_level": "high",
       "important_actions": [
-        "Open Dataset Management to create/edit a dataset record",
-        "Validate that changes affect available datasets"
+        "Open Dataset Management and verify dataset CRUD operations",
+        "Ensure permissions/errors surface correctly when modifying datasets"
       ],
       "tier": "main",
       "featureGroup": "Dataset Management",
       "page": "https://preprod.lokasi.com/intelligence"
     },
     {
-      "name": "Search (location/address)",
-      "description": "Search control to locate addresses or places on the map.",
-      "why_this_feature": "A 'Search' button is present and '4 Street' appears as body text, likely a search or selected location label.",
+      "name": "Map selection tool (Draw Polygon)",
+      "description": "Tool to draw polygon on map to define analysis area or filter data.",
+      "why_this_feature": "'Draw Polygon' control is visible, implying spatial selection functionality.",
+      "confidence": 0.97,
+      "risk_level": "medium",
+      "important_actions": [
+        "Use Draw Polygon to create an area and verify coordinates/geometry returned",
+        "Run analysis using the drawn polygon as input and confirm results"
+      ],
+      "tier": "main",
+      "featureGroup": "Spatial Analysis",
+      "page": "https://preprod.lokasi.com/intelligence"
+    },
+    {
+      "name": "Recenter Map",
+      "description": "Control to reset map view to a default center or focused feature.",
+      "why_this_feature": "'Recenter Map' control is visible.",
+      "confidence": 0.9,
+      "risk_level": "low",
+      "important_actions": [
+        "Pan/zoom map then click Recenter Map and confirm view resets as expected"
+      ],
+      "tier": "main",
+      "featureGroup": "Spatial Analysis",
+      "page": "https://preprod.lokasi.com/intelligence"
+    },
+    {
+      "name": "Search (geocoding/address)",
+      "description": "Search bar to find addresses or places and recenter map to results.",
+      "why_this_feature": "A 'Search' control exists and page contains text '4 Street' suggesting a search result or label.",
       "confidence": 0.8,
       "risk_level": "medium",
       "important_actions": [
-        "Use Search to find '4 Street' and verify map pans and label",
-        "Confirm search results and selection behavior"
+        "Search for an address (e.g., '4 Street') and confirm map centers and highlights result",
+        "Verify result metadata/displayed label"
       ],
       "tier": "secondary",
       "featureGroup": "Search",
       "page": "https://preprod.lokasi.com/intelligence"
     },
     {
-      "name": "User/Settings controls",
-      "description": "Access to account settings and application configuration.",
-      "why_this_feature": "'My Account' and 'Settings' buttons are visible for user and app-level settings.",
-      "confidence": 0.8,
+      "name": "UI controls: Collapse, Settings, My Account",
+      "description": "Collapse sidebar, access settings and account-related actions.",
+      "why_this_feature": "Buttons for 'Collapse', 'Settings', and 'My Account' are present.",
+      "confidence": 0.9,
       "risk_level": "low",
       "important_actions": [
-        "Open Settings to confirm configurable options",
-        "Open My Account to verify user info and permissions display"
+        "Toggle Collapse to hide/show side panels",
+        "Open Settings and My Account to verify navigation/modal behavior"
       ],
       "tier": "secondary",
       "featureGroup": "Settings",
-      "page": "https://preprod.lokasi.com/intelligence"
-    },
-    {
-      "name": "Sidebar collapse/expand",
-      "description": "Toggle to collapse or expand side panels/tools.",
-      "why_this_feature": "A 'Collapse' control is present, suggesting adjustable workspace layout.",
-      "confidence": 0.75,
-      "risk_level": "low",
-      "important_actions": [
-        "Toggle Collapse and confirm UI responds and map resizes"
-      ],
-      "tier": "secondary",
-      "featureGroup": "Expand",
       "page": "https://preprod.lokasi.com/intelligence"
     }
   ],
   "featureTiers": {
     "main": [
-      "Map canvas with selectable features/labels",
-      "Draw Polygon / area selection tool",
-      "Analysis run/control panel",
-      "Analysis Job Queue / job monitoring",
+      "Analysis launcher",
+      "Analysis Job Queue",
       "Dataset Explorer",
-      "Dataset Management"
+      "Dataset Management",
+      "Map selection tool (Draw Polygon)",
+      "Recenter Map"
     ],
     "secondary": [
-      "Search (location/address)",
-      "User/Settings controls",
-      "Sidebar collapse/expand"
+      "Search (geocoding/address)",
+      "UI controls: Collapse, Settings, My Account"
     ],
     "unclassified": []
   },
   "featureGroups": {
     "Spatial Analysis": [
-      "Map canvas with selectable features/labels",
-      "Draw Polygon / area selection tool",
-      "Analysis run/control panel"
+      "Analysis launcher",
+      "Map selection tool (Draw Polygon)",
+      "Recenter Map"
     ],
     "Project Management": [
-      "Analysis Job Queue / job monitoring"
+      "Analysis Job Queue"
     ],
     "Dataset Explorer": [
       "Dataset Explorer"
@@ -13506,20 +13532,17 @@
       "Dataset Management"
     ],
     "Search": [
-      "Search (location/address)"
+      "Search (geocoding/address)"
     ],
     "Settings": [
-      "User/Settings controls"
-    ],
-    "Expand": [
-      "Sidebar collapse/expand"
+      "UI controls: Collapse, Settings, My Account"
     ]
   },
-  "globalFingerprint": "02ba4f631e382f16",
+  "globalFingerprint": "17624552ae79d782",
   "featureRecords": [
     {
-      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Map canvas with selectable features/labels",
-      "name": "Map canvas with selectable features/labels",
+      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Analysis launcher",
+      "name": "Analysis launcher",
       "featureGroup": "Spatial Analysis",
       "tier": "main",
       "entryAction": "page-scan",
@@ -13529,73 +13552,23 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Central map displays geographic features and labels (e.g., '4 Street') and supports recentering.",
+      "notes": "Button/entry to create and run spatial analyses against selected datasets or map extents.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
         "confidence": 0.95,
-        "riskLevel": "medium",
-        "importantActions": [
-          "Recenter map",
-          "Click/select map features",
-          "Verify label corresponds to geometry"
-        ]
-      }
-    },
-    {
-      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Draw Polygon / area selection tool",
-      "name": "Draw Polygon / area selection tool",
-      "featureGroup": "Spatial Analysis",
-      "tier": "main",
-      "entryAction": "page-scan",
-      "driver": "llm",
-      "stateType": "panel_change",
-      "status": "completed",
-      "partial": false,
-      "selectedCandidate": "",
-      "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
-      ],
-      "notes": "Tool to draw polygons on the map to define analysis areas.",
-      "pageUrl": "https://preprod.lokasi.com/intelligence",
-      "metadata": {
-        "confidence": 0.9,
-        "riskLevel": "medium",
-        "importantActions": [
-          "Activate Draw Polygon and create a polygon",
-          "Confirm polygon geometry is displayed and editable"
-        ]
-      }
-    },
-    {
-      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Analysis run/control panel",
-      "name": "Analysis run/control panel",
-      "featureGroup": "Spatial Analysis",
-      "tier": "main",
-      "entryAction": "page-scan",
-      "driver": "llm",
-      "stateType": "panel_change",
-      "status": "completed",
-      "partial": false,
-      "selectedCandidate": "",
-      "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
-      ],
-      "notes": "Control to initiate spatial analyses against selected area/datasets.",
-      "pageUrl": "https://preprod.lokasi.com/intelligence",
-      "metadata": {
-        "confidence": 0.9,
         "riskLevel": "high",
         "importantActions": [
-          "Click Analysis to open analysis options",
-          "Start an analysis and verify job creation"
+          "Open Analysis flow",
+          "Start a new analysis job with a selected area/dataset",
+          "Verify job appears in Analysis Job Queue"
         ]
       }
     },
     {
-      "key": "page:https://preprod.lokasi.com/intelligence:Project Management:Analysis Job Queue / job monitoring",
-      "name": "Analysis Job Queue / job monitoring",
+      "key": "page:https://preprod.lokasi.com/intelligence:Project Management:Analysis Job Queue",
+      "name": "Analysis Job Queue",
       "featureGroup": "Project Management",
       "tier": "main",
       "entryAction": "page-scan",
@@ -13605,16 +13578,17 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Interface to view status of queued/running analysis jobs.",
+      "notes": "List or queue UI where running/completed analysis jobs are monitored.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
-        "confidence": 0.9,
+        "confidence": 0.98,
         "riskLevel": "high",
         "importantActions": [
-          "Open Job Queue to verify running/completed jobs",
-          "Cancel or inspect job details if available"
+          "Open queue and confirm job states (running, completed, failed)",
+          "Inspect job details/logs",
+          "Cancel or retry a job if controls exist"
         ]
       }
     },
@@ -13630,16 +13604,16 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Browse and preview available spatial datasets to use in analyses.",
+      "notes": "Browse and select datasets to use in analyses or to display on the map.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
-        "confidence": 0.85,
-        "riskLevel": "high",
+        "confidence": 0.9,
+        "riskLevel": "medium",
         "importantActions": [
-          "Open Dataset Explorer and select a dataset",
-          "Confirm dataset attributes/preview are shown"
+          "Open Dataset Explorer and verify dataset list loads",
+          "Select a dataset and confirm it can be added to map or used in analysis"
         ]
       }
     },
@@ -13655,22 +13629,71 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Administrative controls to add/remove or configure datasets.",
+      "notes": "Administrative UI for creating/updating/deleting datasets used by analyses.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
-        "confidence": 0.8,
+        "confidence": 0.85,
         "riskLevel": "high",
         "importantActions": [
-          "Open Dataset Management to create/edit a dataset record",
-          "Validate that changes affect available datasets"
+          "Open Dataset Management and verify dataset CRUD operations",
+          "Ensure permissions/errors surface correctly when modifying datasets"
         ]
       }
     },
     {
-      "key": "page:https://preprod.lokasi.com/intelligence:Search:Search (location/address)",
-      "name": "Search (location/address)",
+      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Map selection tool (Draw Polygon)",
+      "name": "Map selection tool (Draw Polygon)",
+      "featureGroup": "Spatial Analysis",
+      "tier": "main",
+      "entryAction": "page-scan",
+      "driver": "llm",
+      "stateType": "panel_change",
+      "status": "completed",
+      "partial": false,
+      "selectedCandidate": "",
+      "screenshots": [
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
+      ],
+      "notes": "Tool to draw polygon on map to define analysis area or filter data.",
+      "pageUrl": "https://preprod.lokasi.com/intelligence",
+      "metadata": {
+        "confidence": 0.97,
+        "riskLevel": "medium",
+        "importantActions": [
+          "Use Draw Polygon to create an area and verify coordinates/geometry returned",
+          "Run analysis using the drawn polygon as input and confirm results"
+        ]
+      }
+    },
+    {
+      "key": "page:https://preprod.lokasi.com/intelligence:Spatial Analysis:Recenter Map",
+      "name": "Recenter Map",
+      "featureGroup": "Spatial Analysis",
+      "tier": "main",
+      "entryAction": "page-scan",
+      "driver": "llm",
+      "stateType": "panel_change",
+      "status": "completed",
+      "partial": false,
+      "selectedCandidate": "",
+      "screenshots": [
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
+      ],
+      "notes": "Control to reset map view to a default center or focused feature.",
+      "pageUrl": "https://preprod.lokasi.com/intelligence",
+      "metadata": {
+        "confidence": 0.9,
+        "riskLevel": "low",
+        "importantActions": [
+          "Pan/zoom map then click Recenter Map and confirm view resets as expected"
+        ]
+      }
+    },
+    {
+      "key": "page:https://preprod.lokasi.com/intelligence:Search:Search (geocoding/address)",
+      "name": "Search (geocoding/address)",
       "featureGroup": "Search",
       "tier": "secondary",
       "entryAction": "page-scan",
@@ -13680,22 +13703,22 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Search control to locate addresses or places on the map.",
+      "notes": "Search bar to find addresses or places and recenter map to results.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
         "confidence": 0.8,
         "riskLevel": "medium",
         "importantActions": [
-          "Use Search to find '4 Street' and verify map pans and label",
-          "Confirm search results and selection behavior"
+          "Search for an address (e.g., '4 Street') and confirm map centers and highlights result",
+          "Verify result metadata/displayed label"
         ]
       }
     },
     {
-      "key": "page:https://preprod.lokasi.com/intelligence:Settings:User/Settings controls",
-      "name": "User/Settings controls",
+      "key": "page:https://preprod.lokasi.com/intelligence:Settings:UI controls: Collapse, Settings, My Account",
+      "name": "UI controls: Collapse, Settings, My Account",
       "featureGroup": "Settings",
       "tier": "secondary",
       "entryAction": "page-scan",
@@ -13705,40 +13728,16 @@
       "partial": false,
       "selectedCandidate": "",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356346249-page-1.png"
       ],
-      "notes": "Access to account settings and application configuration.",
+      "notes": "Collapse sidebar, access settings and account-related actions.",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
-        "confidence": 0.8,
+        "confidence": 0.9,
         "riskLevel": "low",
         "importantActions": [
-          "Open Settings to confirm configurable options",
-          "Open My Account to verify user info and permissions display"
-        ]
-      }
-    },
-    {
-      "key": "page:https://preprod.lokasi.com/intelligence:Expand:Sidebar collapse/expand",
-      "name": "Sidebar collapse/expand",
-      "featureGroup": "Expand",
-      "tier": "secondary",
-      "entryAction": "page-scan",
-      "driver": "llm",
-      "stateType": "panel_change",
-      "status": "completed",
-      "partial": false,
-      "selectedCandidate": "",
-      "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774353981292-page-1.png"
-      ],
-      "notes": "Toggle to collapse or expand side panels/tools.",
-      "pageUrl": "https://preprod.lokasi.com/intelligence",
-      "metadata": {
-        "confidence": 0.75,
-        "riskLevel": "low",
-        "importantActions": [
-          "Toggle Collapse and confirm UI responds and map resizes"
+          "Toggle Collapse to hide/show side panels",
+          "Open Settings and My Account to verify navigation/modal behavior"
         ]
       }
     },
@@ -13754,23 +13753,27 @@
       "partial": true,
       "selectedCandidate": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
       "screenshots": [
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354046547-workflow-dataset-explorer-edit-existing-filter-landing.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354060718-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354075197-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354089627-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354111668-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354126149-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354227569-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354249556-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354290507-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354306660-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354322925-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354343003-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354365816-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354394809-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
-        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354412798-workflow-dataset-explorer-edit-existing-filter-select-dataset.png"
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356412079-workflow-dataset-explorer-edit-existing-filter-landing.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356424716-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356434712-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356448164-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356463248-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356475084-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356543416-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356554499-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356597021-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356612533-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356629984-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356644499-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356660082-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356675902-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356689266-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356706849-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356727016-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356742401-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+        "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356780767-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png"
       ],
-      "notes": "Planner budget exhausted for Administrative Area",
+      "notes": "Branch did not reach a committed success state: Administrative Area",
       "pageUrl": "https://preprod.lokasi.com/intelligence",
       "metadata": {
         "workflow": "dataset-explorer-bvt",
@@ -13787,7 +13790,7 @@
             "priority": 0,
             "observed_signal": "search input=Village",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354060718-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356424716-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
             "reason": ""
           },
           {
@@ -13801,7 +13804,7 @@
             "priority": 0,
             "observed_signal": "active dataset=Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354075197-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356434712-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
             "clicked": true,
             "candidateTitle": "Household Expenditure Village Jakarta 2024 The mean annual expenditure per household. Use this to analyze purchasing power and economic status at the family unit level in Jakarta.",
             "reason": ""
@@ -13817,7 +13820,7 @@
             "priority": 0,
             "observed_signal": "province selected=yes",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354089627-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356448164-workflow-dataset-explorer-edit-existing-filter-choose-province.png",
             "provinceSelected": true,
             "selection": "DKI Jakarta",
             "province": "DKI Jakarta",
@@ -13835,7 +13838,7 @@
             "priority": 0,
             "observed_signal": "attrFilter=applied",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354111668-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356463248-workflow-dataset-explorer-edit-existing-filter-apply-attribute-filter.png",
             "attributeFilter": {
               "attempted": true,
               "applied": true,
@@ -13861,7 +13864,7 @@
             "priority": 0,
             "observed_signal": "Success toast observed; committed-state verification deferred to post-add reconciliation.",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354126149-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356475084-workflow-dataset-explorer-edit-existing-filter-add-dataset.png",
             "addDataset": {
               "attempted": true,
               "added": true,
@@ -13885,7 +13888,7 @@
             "priority": 0,
             "observed_signal": "Loaded dataset row not found in Data Selection",
             "step_status": "failed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354227569-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356543416-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
             "editFilterVerification": {
               "attempted": true,
               "opened": false,
@@ -13906,7 +13909,7 @@
             "priority": 0,
             "observed_signal": "Loaded dataset row not found in Data Selection",
             "step_status": "failed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354249556-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356554499-workflow-dataset-explorer-edit-existing-filter-open-edit-filter.png",
             "editFilterVerification": {
               "attempted": true,
               "opened": false,
@@ -13918,103 +13921,163 @@
           },
           {
             "driver": "llm",
-            "label": "Set aggregation to Administrative Area",
+            "label": "Select aggregation: Administrative Area",
             "action_type": "select_aggregation",
             "target_text": "Administrative Area",
-            "input_text": "Administrative Area",
-            "expected_signal": "aggregation_selected:Administrative Area",
-            "rationale": "Aggregation is empty; Administrative Area is required for Village-level dataset and for reopening the dataset's existing filter editor.",
+            "input_text": "",
+            "expected_signal": "Aggregation control shows 'Administrative Area' selected.",
+            "rationale": "Restore the original aggregation context (Administrative Area) so the previously added dataset appears in Data Selection.",
             "priority": 1,
             "observed_signal": "aggregation selected=-",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354290507-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356597021-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
             "reason": ""
           },
           {
             "driver": "llm",
-            "label": "Verify Data Selection loaded datasets",
+            "label": "Verify dataset row visible in Data Selection",
             "action_type": "verify_state",
-            "target_text": "Data Selection loaded datasets (check for 'Household Expenditure Village Jakarta 2024')",
-            "input_text": "",
-            "expected_signal": "Loaded dataset row 'Household Expenditure Village Jakarta 2024' is visible in Data Selection (or explicit absence message)",
-            "rationale": "Confirm committed dataset row exists before trying to open its Attribute Filter editor; necessary because prior open-edit attempts failed.",
+            "target_text": "Data Selection contains 'Household Expenditure Village Jakarta 2024'",
+            "input_text": "Check Data Selection panel for a committed row titled 'Household Expenditure Village Jakarta 2024' and any visible filter cards or edit controls.",
+            "expected_signal": "Committed dataset row for 'Household Expenditure Village Jakarta 2024' is visible in Data Selection (row, edit/filter button, or saved filter card present).",
+            "rationale": "Confirm committed dataset visibility in the Data Selection list (required before opening an edit-filter flow).",
             "priority": 1,
             "observed_signal": "State captured without mutation",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354306660-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356612533-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
             "reason": "State captured without mutation"
           },
           {
             "driver": "llm",
-            "label": "Search for 'Household Expenditure Village Jakarta 2024'",
-            "action_type": "search_dataset",
+            "label": "Select dataset row",
+            "action_type": "select_dataset",
             "target_text": "Household Expenditure Village Jakarta 2024",
+            "input_text": "",
+            "expected_signal": "Dataset row becomes active/selected (highlighted) and an edit/filter button or saved filter cards are visible in Data Selection.",
+            "rationale": "Activate the committed dataset row so its edit/filter controls or saved filter cards become visible (needed before opening edit-filter).",
+            "priority": 1,
+            "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
+            "step_status": "failed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356629984-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+            "clicked": false,
+            "candidateTitle": "Household Expenditure Village Jakarta 2024",
+            "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
+          },
+          {
+            "driver": "llm",
+            "label": "Verify dataset row interactivity and edit control",
+            "action_type": "verify_state",
+            "target_text": "Data Selection row 'Household Expenditure Village Jakarta 2024' is present and interactive",
+            "input_text": "Check for row highlightability, clickability, and visible edit/filter button or saved filter cards on the row.",
+            "expected_signal": "Dataset row becomes selectable/highlightable or an edit/filter button or saved filter card is visible on the row.",
+            "rationale": "Determine whether the Data Selection row is clickable or has an edit/filter button before attempting to open the edit-filter editor.",
+            "priority": 1,
+            "observed_signal": "State captured without mutation",
+            "step_status": "passed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356644499-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+            "reason": "State captured without mutation"
+          },
+          {
+            "driver": "llm",
+            "label": "Verify dataset row edit/filter control presence",
+            "action_type": "verify_state",
+            "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' shows an edit icon, three-dot menu, saved filter card, or inline 'Edit filter' control.",
+            "input_text": "Inspect the committed dataset row area (right side of row and any overflow/ellipsis menus) for an edit/filter button, saved filter cards, or a context menu that would open the edit-filter editor.",
+            "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' button, three-dot menu, or saved filter card) next to the 'Household Expenditure Village Jakarta 2024' row.",
+            "rationale": "Selecting the dataset row failed previously. Confirm whether an edit/filter button, ellipsis menu, or inline saved-filter card is present on the 'Household Expenditure Village Jakarta 2024' row so we can open the edit-filter editor next.",
+            "priority": 1,
+            "observed_signal": "State captured without mutation",
+            "step_status": "passed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356660082-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+            "reason": "State captured without mutation"
+          },
+          {
+            "driver": "llm",
+            "label": "Select dataset row to reveal edit/filter controls",
+            "action_type": "select_dataset",
+            "target_text": "Household Expenditure Village Jakarta 2024",
+            "input_text": "Click the dataset row title or row area for 'Household Expenditure Village Jakarta 2024' to make it active/highlighted.",
+            "expected_signal": "Dataset row becomes highlighted/selected and an edit/filter button, three-dot menu, or saved filter card becomes visible on the row.",
+            "rationale": "Activating the committed dataset row should surface the edit/filter button or saved filter cards needed to open the edit-filter editor.",
+            "priority": 1,
+            "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
+            "step_status": "failed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356675902-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+            "clicked": false,
+            "candidateTitle": "Household Expenditure Village Jakarta 2024",
+            "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
+          },
+          {
+            "driver": "llm",
+            "label": "Verify dataset row edit/filter control presence (right-side and overflow)",
+            "action_type": "verify_state",
+            "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' — inspect right-side area, overflow/ellipsis menu, and any inline saved-filter card for an edit/filter control",
+            "input_text": "Check for an edit icon, three-dot/ellipsis menu, context-menu entry labeled 'Edit filter', inline saved-filter cards, or any disabled state indicator on those controls. Note exact visible text and whether control is interactive.",
+            "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' menu entry, three-dot menu, or saved filter card) is present and marked interactive/enabled, or a clear disabled/hidden state is reported.",
+            "rationale": "We must locate a non-row-click control (edit icon, three-dot menu, 'Edit filter' entry, or saved filter card) to open the edit-filter editor since direct row selection failed.",
+            "priority": 1,
+            "observed_signal": "State captured without mutation",
+            "step_status": "passed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356689266-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+            "reason": "State captured without mutation"
+          },
+          {
+            "driver": "llm",
+            "label": "Inspect right-side / overflow area for edit/filter control",
+            "action_type": "verify_state",
+            "target_text": "Right-side area and overflow (three-dot/ellipsis) menu for 'Household Expenditure Village Jakarta 2024' row",
+            "input_text": "Check the row's right-hand controls, overflow/ellipsis menu, and any inline saved-filter card for an edit icon, 'Edit filter' menu entry, or disabled/hidden indicator. Report exact visible text and whether it's interactive.",
+            "expected_signal": "Visible edit/filter control (edit icon, 'Edit filter' menu entry, three-dot menu, or saved filter card) is present and interactive, or an explicit disabled/hidden state is reported.",
+            "rationale": "The dataset row was not clickable previously. We must locate a non-row control (ellipsis/three-dot menu, edit icon, inline saved-filter card, or explicit 'Edit filter' entry) to open the edit-filter editor.",
+            "priority": 1,
+            "observed_signal": "State captured without mutation",
+            "step_status": "passed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356706849-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
+            "reason": "State captured without mutation"
+          },
+          {
+            "driver": "llm",
+            "label": "Open overflow menu for dataset row",
+            "action_type": "select_dataset",
+            "target_text": "Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+            "input_text": "Click the row's three-dot/ellipsis overflow menu to open the context menu and reveal the 'Edit filter' entry (or edit icon).",
+            "expected_signal": "Overflow/context menu opens for the dataset row and shows an 'Edit filter' entry, edit icon, or inline saved-filter actions; menu items are visible and interactive.",
+            "rationale": "Direct row selection failed previously. The row's overflow/ellipsis menu often contains the 'Edit filter' action; clicking it should expose the edit/filter entry without changing dataset selection state.",
+            "priority": 1,
+            "observed_signal": "Dataset not clickable: Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+            "step_status": "failed",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356727016-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
+            "clicked": false,
+            "candidateTitle": "Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row",
+            "reason": "Dataset not clickable: Three-dot/ellipsis overflow menu for 'Household Expenditure Village Jakarta 2024' row"
+          },
+          {
+            "driver": "llm",
+            "label": "Search for the dataset to surface an interactive row",
+            "action_type": "search_dataset",
+            "target_text": "Dataset Explorer search input",
             "input_text": "Household Expenditure Village Jakarta 2024",
-            "expected_signal": "Dataset card 'Household Expenditure Village Jakarta 2024' appears in Dataset Explorer results (visible card or explicit 'no results' message).",
-            "rationale": "Find the specific Village-level Administrative Area dataset so we can open its Attribute Filter editor and verify saved filter cards.",
+            "expected_signal": "Search results show the dataset as a selectable row (row highlights or selection becomes possible) and an edit/filter control (edit icon, three-dot menu, or inline saved-filter card) becomes visible and interactive for that row.",
+            "rationale": "Filtering the Dataset Explorer list to the exact title may render a dedicated, interactive row or reveal the edit/filter control if the current view is non-interactive or scrolled out of an actionable list.",
             "priority": 1,
             "observed_signal": "Search input was not editable",
             "step_status": "failed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354322925-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356742401-workflow-dataset-explorer-edit-existing-filter-search-dataset.png",
             "reason": "Search input was not editable"
           },
           {
             "driver": "llm",
-            "label": "Verify Dataset Explorer & Data Selection state",
-            "action_type": "verify_state",
-            "target_text": "Verify Dataset Explorer search editable, aggregation='Administrative Area' committed, and Data Selection contains 'Household Expenditure Village Jakarta 2024' (or explicit absence).",
-            "input_text": "",
-            "expected_signal": "Confirmed: search input editable state, aggregation_selected:Administrative Area (or not), and explicit presence or absence of dataset row 'Household Expenditure Village Jakarta 2024'.",
-            "rationale": "Confirm whether the Dataset Explorer search input is enabled, the Administrative Area aggregation is actually selected, and whether 'Household Expenditure Village Jakarta 2024' is present in Data Selection before attempting search/add again.",
-            "priority": 1,
-            "observed_signal": "State captured without mutation",
-            "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354343003-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-            "reason": "State captured without mutation"
-          },
-          {
-            "driver": "llm",
-            "label": "Verify presence of 'Edit Filter' on the committed dataset row",
-            "action_type": "verify_state",
-            "target_text": "Data Selection row for 'Household Expenditure Village Jakarta 2024' shows an Edit Filter / filter-pencil control (or explicit absence message).",
-            "input_text": "",
-            "expected_signal": "Visible and actionable 'Edit Filter' control for dataset row 'Household Expenditure Village Jakarta 2024' (or explicit 'no edit filter' message).",
-            "rationale": "Before attempting to open the filter editor, confirm the Data Selection row for 'Household Expenditure Village Jakarta 2024' has an Edit Filter affordance (button/icon) so we can reopen the existing filter editor.",
-            "priority": 1,
-            "observed_signal": "State captured without mutation",
-            "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354365816-workflow-dataset-explorer-edit-existing-filter-verify-state.png",
-            "reason": "State captured without mutation"
-          },
-          {
-            "driver": "llm",
-            "label": "Select aggregation 'Administrative Area'",
+            "label": "Select aggregation: Administrative Area",
             "action_type": "select_aggregation",
-            "target_text": "Administrative Area",
+            "target_text": "Aggregation selector",
             "input_text": "Administrative Area",
-            "expected_signal": "Aggregation 'Administrative Area' becomes selected and Dataset Explorer updates (cards refresh). Preferred dataset 'Household Expenditure Village Jakarta 2024' appears in the candidate list or an explicit 'no results' message is shown.",
-            "rationale": "Ensure Dataset Explorer is scoped to Administrative Area datasets so the preferred Village-level dataset appears without needing the search input.",
+            "expected_signal": "Aggregation changed to 'Administrative Area' and Data Selection shows 'Household Expenditure Village Jakarta 2024' with edit/filter controls (edit icon or overflow menu) and saved filter cards visible",
+            "rationale": "Aggregation is blank — set to Administrative Area (deeper than City/District for village-level dataset) to restore the Data Selection row's edit/filter controls so you can reopen the existing filter editor.",
             "priority": 1,
             "observed_signal": "aggregation selected=-",
             "step_status": "passed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354394809-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
+            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774356780767-workflow-dataset-explorer-edit-existing-filter-select-aggregation.png",
             "reason": ""
-          },
-          {
-            "driver": "llm",
-            "label": "Select dataset row 'Household Expenditure Village Jakarta 2024'",
-            "action_type": "select_dataset",
-            "target_text": "Household Expenditure Village Jakarta 2024",
-            "input_text": "Household Expenditure Village Jakarta 2024",
-            "expected_signal": "The dataset row becomes selected and the Edit Filter control or the filter editor opens showing the dataset's saved filter cards (or an explicit message if no editor is available).",
-            "rationale": "Selecting the committed dataset row should surface the Edit Filter control or open the dataset details, allowing us to reopen the existing filter editor to verify saved filter cards.",
-            "priority": 1,
-            "observed_signal": "Dataset not clickable: Household Expenditure Village Jakarta 2024",
-            "step_status": "failed",
-            "screenshot": "/Users/bvt-zhafran/Downloads/lokasi-agent-mvp/data/screenshots/baseline-lokasi-preprod-latest/1774354412798-workflow-dataset-explorer-edit-existing-filter-select-dataset.png",
-            "clicked": false,
-            "candidateTitle": "Household Expenditure Village Jakarta 2024",
-            "reason": "Dataset not clickable: Household Expenditure Village Jakarta 2024"
           }
         ],
         "addDataset": {
@@ -14041,11 +14104,11 @@
     }
   ],
   "coverage": {
-    "totalFeatures": 10,
-    "completedFeatures": 9,
+    "totalFeatures": 9,
+    "completedFeatures": 8,
     "partialFeatures": 1,
     "mainFeaturesCovered": 4,
-    "secondaryFeaturesCovered": 3,
-    "workflowAttempts": 14
+    "secondaryFeaturesCovered": 2,
+    "workflowAttempts": 18
   }
 }

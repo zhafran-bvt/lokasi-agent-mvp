@@ -1378,14 +1378,14 @@ async function inspectDataSelectionTable({
   let aliasReview = null;
   let tableOpen = { opened: false, reason: 'Loaded dataset row not found in Data Selection' };
 
-  await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+  // Don't call openAnalysisBase - dataset state from add_dataset should be preserved
   await helpers.sleep(400);
 
   for (let attemptIndex = 0; attemptIndex < 12; attemptIndex += 1) {
     if (attemptIndex > 0) {
       await helpers.sleep(1000);
       if (attemptIndex % 3 === 0) {
-        await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+        // Don't reset page state during verification - preserve dataset selection
         await helpers.sleep(300);
       }
     }
