@@ -35,6 +35,9 @@ jobs:
       - name: Generate report from latest run
         run: npm run report
         env:
+          APP_URL: ${{ secrets.APP_URL }}
+          APP_EMAIL: ${{ secrets.APP_EMAIL }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       
       - name: Build HTML and artifacts
