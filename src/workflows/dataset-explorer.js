@@ -2221,7 +2221,10 @@ async function runLlmBranch({ page, runId, branch, helpers, workflowBaseUrl }) {
 
 async function reconcileLoadedDatasets({ page, runId, helpers, workflowBaseUrl, steps }) {
   await helpers.resetDatasetExplorerContext(page, workflowBaseUrl);
-  await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+  // Don't navigate away during focused workflow - preserve page state and dataset selection
+  if (!config.focusedWorkflow) {
+    await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+  }
   await helpers.sleep(300);
   const initialLoadedTitles = await helpers.readLoadedDatasetTitles(page).catch(() => []);
   const targetSteps = steps.filter((step) => (
@@ -2231,7 +2234,10 @@ async function reconcileLoadedDatasets({ page, runId, helpers, workflowBaseUrl, 
   ));
 
   for (const step of targetSteps) {
-    await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+    // Don't navigate away during focused workflow - preserve page state between steps
+    if (!config.focusedWorkflow) {
+      await helpers.openAnalysisBase(page, workflowBaseUrl).catch(() => {});
+    }
     await helpers.sleep(250);
     const attributeFilter = step.attributeFilter || {};
     const expectedTitle = step.selectedCandidate
